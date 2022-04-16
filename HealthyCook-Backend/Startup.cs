@@ -1,4 +1,8 @@
+using HealthyCook_Backend.Domain.IRepositories;
+using HealthyCook_Backend.Domain.IServices;
 using HealthyCook_Backend.Persistence.Context;
+using HealthyCook_Backend.Persistence.Repositories;
+using HealthyCook_Backend.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +32,21 @@ namespace HealthyCook_Backend
         {
             services.AddDbContext<AplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("Conexion")));
-            services.AddControllers();
+
+            // Services
+            services.AddScoped<IUserService, UserService>();
+
+            // Repository
+            services.AddScoped<IUserRepository, UserRepository>();
+
+            // Cors
+            services.AddCors(options => options.AddPolicy("AllowWebapp",
+                             builder => builder.AllowAnyOrigin().
+                                                AllowAnyHeader().
+                                                AllowAnyMethod()));
+
+            services.AddControllers().AddNewtonsoftJson(options =>
+                                                        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +56,8 @@ namespace HealthyCook_Backend
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("AllowWebapp");
 
             app.UseRouting();
 
