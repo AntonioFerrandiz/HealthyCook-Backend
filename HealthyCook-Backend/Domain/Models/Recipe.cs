@@ -10,6 +10,7 @@ namespace HealthyCook_Backend.Domain.Models
     public class Recipe
     {
         public int ID { get; set; }
+        public int Active { get; set; }
 
         [Required]
         [Column(TypeName = "varchar(100)")]
@@ -22,8 +23,7 @@ namespace HealthyCook_Backend.Domain.Models
         public int UserID { get; set; }
         public User User { get; set; }
 
-        public int RecipeDetailsID { get; set; }
-        public RecipeDetails RecipeDetails { get; set; }
+        
 
         public List<RecipeSteps> recipeStepsList { get; set; }
     }

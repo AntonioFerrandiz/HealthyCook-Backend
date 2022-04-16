@@ -12,7 +12,7 @@ namespace HealthyCook_Backend.Domain.Models
 
         public DateTime DateCreated { get; set; }
 
-        public int Active { get; set; }
+       
 
         [Required]
         public int PreparationTime { get; set; }
@@ -20,6 +20,9 @@ namespace HealthyCook_Backend.Domain.Models
         [Required]
         public int Portions { get; set; }
         
+        public int RecipeID { get; set; }
+        public Recipe Recipe { get; set; }
+
         public List<Ingredient> ingredientsList { get; set; }
 
         
