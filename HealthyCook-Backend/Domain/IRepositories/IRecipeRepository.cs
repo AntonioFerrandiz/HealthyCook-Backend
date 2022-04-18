@@ -10,6 +10,12 @@ namespace HealthyCook_Backend.Domain.IRepositories
     {
         Task CreateRecipe(Recipe recipe);
 
+        Task<Recipe> GetRecipeByID(int recipeID);
+
+        Task<Recipe> ChangePublicationStatus(int recipeID);
         Task<List<Recipe>> GetListRecipes();
+
+        Task<List<Recipe>> GetListRecipesPublishedByUser(int userID);
+        Task<List<Recipe>> GetListRecipesNoPublishedByUser(int userID);
     }
 }
