@@ -12,20 +12,25 @@ namespace HealthyCook_Backend.Domain.Models
         public int ID { get; set; }
         public int Active { get; set; }
 
+        public int Published { get; set; }
+        
         [Required]
-        [Column(TypeName = "varchar(100)")]
         public string Name { get; set; }
 
         [Required]
-        [Column(TypeName = "varchar(150)")]
         public string Description { get; set; }
+
+        [Required]
+        public string Preparation { get; set;}
 
         public int UserID { get; set; }
         public User User { get; set; }
 
-        
 
-        public List<RecipeSteps> recipeStepsList { get; set; }
+        //public int RecipeDetailsID { get; set; }
+        //public RecipeDetails RecipeDetails{ get; set; }
+
+        //public List<RecipeSteps> recipeStepsList { get; set; }
     }
 
 }
