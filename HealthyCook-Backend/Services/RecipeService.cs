@@ -18,6 +18,11 @@ namespace HealthyCook_Backend.Services
             _recipeRepository = recipeRepository;
         }
 
+        public async Task<Recipe> ChangePublicationStatus(int recipeID)
+        {
+            return await _recipeRepository.ChangePublicationStatus(recipeID);
+        }
+
         public async Task CreateRecipe(Recipe recipe)
         {
             await _recipeRepository.CreateRecipe(recipe);
@@ -26,6 +31,20 @@ namespace HealthyCook_Backend.Services
         public async Task<List<Recipe>> GetListRecipes()
         {
             return await _recipeRepository.GetListRecipes();
+        }
+
+        public async Task<List<Recipe>> GetListRecipesPublishedByUser(int userID)
+        {
+            return await _recipeRepository.GetListRecipesPublishedByUser(userID);
+        }
+        public async Task<List<Recipe>> GetListRecipesNoPublishedByUser(int userID)
+        {
+            return await _recipeRepository.GetListRecipesNoPublishedByUser(userID);
+        }
+        
+        public async Task<Recipe> GetRecipeByID(int recipeID)
+        {
+            return await _recipeRepository.GetRecipeByID(recipeID);
         }
     }
 }
