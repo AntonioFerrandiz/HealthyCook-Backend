@@ -4,14 +4,16 @@ using HealthyCook_Backend.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HealthyCook_Backend.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    partial class AplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220417211114_v28")]
+    partial class v28
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,8 +43,8 @@ namespace HealthyCook_Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Published")
-                        .HasColumnType("int");
+                    b.Property<bool>("Published")
+                        .HasColumnType("bit");
 
                     b.Property<int>("UserID")
                         .HasColumnType("int");
@@ -77,15 +79,11 @@ namespace HealthyCook_Backend.Migrations
                     b.Property<int>("RecipeID")
                         .HasColumnType("int");
 
-                    b.Property<string>("RecipeVideoURL")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Servings")
                         .HasColumnType("int");
 
-                    b.Property<string>("TimePeriod")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("TimePeriod")
+                        .HasColumnType("int");
 
                     b.HasKey("ID");
 

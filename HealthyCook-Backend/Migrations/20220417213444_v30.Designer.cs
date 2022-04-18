@@ -4,14 +4,16 @@ using HealthyCook_Backend.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HealthyCook_Backend.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    partial class AplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220417213444_v30")]
+    partial class v30
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,9 +78,6 @@ namespace HealthyCook_Backend.Migrations
 
                     b.Property<int>("RecipeID")
                         .HasColumnType("int");
-
-                    b.Property<string>("RecipeVideoURL")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Servings")
                         .HasColumnType("int");

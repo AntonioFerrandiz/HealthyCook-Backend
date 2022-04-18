@@ -4,20 +4,43 @@ using HealthyCook_Backend.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HealthyCook_Backend.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    partial class AplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220416213601_v17")]
+    partial class v17
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("HealthyCook_Backend.Domain.Models.Ingredient", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RecipeDetailsID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("RecipeDetailsID");
+
+                    b.ToTable("Ingredient");
+                });
 
             modelBuilder.Entity("HealthyCook_Backend.Domain.Models.Recipe", b =>
                 {
@@ -31,18 +54,11 @@ namespace HealthyCook_Backend.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(150)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Preparation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Published")
-                        .HasColumnType("int");
+                        .HasColumnType("varchar(100)");
 
                     b.Property<int>("UserID")
                         .HasColumnType("int");
@@ -61,31 +77,17 @@ namespace HealthyCook_Backend.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Calories")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Difficulty")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Portions")
+                        .HasColumnType("int");
 
                     b.Property<int>("PreparationTime")
                         .HasColumnType("int");
 
                     b.Property<int>("RecipeID")
                         .HasColumnType("int");
-
-                    b.Property<string>("RecipeVideoURL")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Servings")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TimePeriod")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -127,6 +129,15 @@ namespace HealthyCook_Backend.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("HealthyCook_Backend.Domain.Models.Ingredient", b =>
+                {
+                    b.HasOne("HealthyCook_Backend.Domain.Models.RecipeDetails", "RecipeDetails")
+                        .WithMany("ingredientsList")
+                        .HasForeignKey("RecipeDetailsID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("HealthyCook_Backend.Domain.Models.Recipe", b =>
