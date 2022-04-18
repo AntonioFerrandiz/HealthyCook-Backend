@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,10 +36,12 @@ namespace HealthyCook_Backend
 
             // Services
             services.AddScoped<IUserService, UserService>();
-
+            services.AddScoped<IRecipeService, RecipeService>();
+            services.AddScoped<IRecipeDetailsService, RecipeDetailsService>();
             // Repository
             services.AddScoped<IUserRepository, UserRepository>();
-
+            services.AddScoped<IRecipeRepository, RecipeRepository>();
+            services.AddScoped<IRecipeDetailsRepository, RecipeDetailsRepository>();
             // Cors
             services.AddCors(options => options.AddPolicy("AllowWebapp",
                              builder => builder.AllowAnyOrigin().
@@ -47,7 +50,32 @@ namespace HealthyCook_Backend
 
             services.AddControllers().AddNewtonsoftJson(options =>
                                                         options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            //AddSwagger
+            AddSwagger(services);
+            // ^^^^^^^^
         }
+        //AddSwagger
+        private void AddSwagger(IServiceCollection services)
+        {
+            services.AddSwaggerGen(options =>
+            {
+                var groupName = "v1";
+
+                options.SwaggerDoc(groupName, new OpenApiInfo
+                {
+                    Title = $"Ecc {groupName}",
+                    Version = groupName,
+                    Description = "ECC API",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "EveryCanCook Company",
+                        Email = string.Empty,
+                        Url = new Uri("https://foo.com/"),
+                    }
+                });
+            });
+        }
+        // ^^^^^^^^
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -56,7 +84,13 @@ namespace HealthyCook_Backend
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            // Swagger
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ecc API V1");
+            });
+            // ^^^^^^^^
             app.UseCors("AllowWebapp");
 
             app.UseRouting();
