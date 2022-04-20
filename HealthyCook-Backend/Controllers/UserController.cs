@@ -19,7 +19,11 @@ namespace HealthyCook_Backend.Controllers
             _userService = userService;
         }
 
-
+        /// <summary>
+        /// Registro de usuario
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] User user)
         {
@@ -34,6 +38,47 @@ namespace HealthyCook_Backend.Controllers
                 user.DateCreated = DateTime.Now;
                 await _userService.SaveUser(user);
                 return Ok(new { message = "Usuario registrado con exito." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Eliminar usuario
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        [HttpDelete("{userID}")]
+        public async Task<IActionResult> DeleteUser(int userID)
+        {
+            try
+            {
+                var user = await _userService.SearchUser(userID);
+                if (user == null) return BadRequest(new { message = "a no esta" });
+                await _userService.DeleteUser(user);
+                return Ok(new { message = "xd se borro pipi" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        /// <summary>
+        /// Buscar usuario por su ID
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        [Route("SearchUser/{userID}")]
+        [HttpGet]
+        public async Task<IActionResult> SearchUser(int userID)
+        {
+            try
+            {
+                var patient = await _userService.SearchUser(userID);
+                return Ok(patient);
             }
             catch (Exception ex)
             {

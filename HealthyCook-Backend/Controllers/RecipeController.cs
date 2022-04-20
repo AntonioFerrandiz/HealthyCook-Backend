@@ -19,6 +19,11 @@ namespace HealthyCook_Backend.Controllers
             _recipeService = recipeService;
         }
 
+        /// <summary>
+        /// Registro de receta
+        /// </summary>
+        /// <param name="recipe"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Recipe recipe)
         {
@@ -36,6 +41,33 @@ namespace HealthyCook_Backend.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Eliminación de receta
+        /// </summary>
+        /// <param name="recipeID"></param>
+        /// <returns></returns>
+        [HttpDelete("{recipeID}")]
+        public async Task<IActionResult> DeleteRecipe(int recipeID)
+        {
+            try
+            {
+                var recipe = await _recipeService.GetRecipeByID(recipeID);
+                if (recipe == null) return BadRequest(new { message = "no se encontro la receta" });
+                await _recipeService.DeleteRecipe(recipe);
+                return Ok(new { message = "se elimino xd" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Obtener receta por ID
+        /// </summary>
+        /// <param name="recipeID"></param>
+        /// <returns></returns>
         [HttpGet("{recipeID}")]
         public async Task<IActionResult> GetRecipeByID(int recipeID)
         {
@@ -50,6 +82,10 @@ namespace HealthyCook_Backend.Controllers
             }
         }
 
+        /// <summary>
+        /// Obtener lista de todas las recetas disponibles
+        /// </summary>
+        /// <returns></returns>
         [Route("GetListRecipes")]
         [HttpGet]
         public async Task<IActionResult> GetListRecipes()
@@ -65,6 +101,11 @@ namespace HealthyCook_Backend.Controllers
             }
         }
 
+        /// <summary>
+        /// Obtener lista de las recetas publicadas por usuario
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         [Route("GetListRecipesPublishedByUser/{userId}")]
         [HttpGet]
         public async Task<IActionResult> GetListRecipesPublishedByUser(int userId)
@@ -80,6 +121,11 @@ namespace HealthyCook_Backend.Controllers
             }
         }
 
+        /// <summary>
+        /// Obtener lista de las recetas que aun no han sido publicas por usuario
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         [Route("GetListRecipesNoPublishedByUser/{userId}")]
         [HttpGet]
         public async Task<IActionResult> GetListRecipesNoPublishedByUser(int userId)
@@ -95,6 +141,11 @@ namespace HealthyCook_Backend.Controllers
             }
         }
 
+        /// <summary>
+        /// Cambiar estado de publicación de la receta
+        /// </summary>
+        /// <param name="recipeID"></param>
+        /// <returns></returns>
         [Route("ChangePublicationStatus/{recipeID}")]
         [HttpPut]
         public async Task<IActionResult> ChangePublicationStatus(int recipeID)

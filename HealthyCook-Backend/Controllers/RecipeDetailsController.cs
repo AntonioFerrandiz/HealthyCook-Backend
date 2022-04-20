@@ -19,6 +19,11 @@ namespace HealthyCook_Backend.Controllers
             _recipeDetailsService = recipeDetailsService;
         }
 
+        /// <summary>
+        /// Registro de los detalles de la receta
+        /// </summary>
+        /// <param name="recipeDetails"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]RecipeDetails recipeDetails)
         {
@@ -35,6 +40,11 @@ namespace HealthyCook_Backend.Controllers
             }
         }
 
+        /// <summary>
+        /// Obtener detalles de la receta por la ID de la receta
+        /// </summary>
+        /// <param name="recipeId"></param>
+        /// <returns></returns>
         [Route("GetRecipeDetails/{recipeId}")]
         [HttpGet]
         public async Task<IActionResult> GetRecipeDetails(int recipeId)
@@ -42,6 +52,27 @@ namespace HealthyCook_Backend.Controllers
             try
             {
                 var recipeDetail = await _recipeDetailsService.GetRecipeDetails(recipeId);
+                return Ok(recipeDetail);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Busqueda de los detalles de la receta por la ID de la receta
+        /// </summary>
+        /// <param name="recipeId"></param>
+        /// <returns></returns>
+        [Route("SearchRecipeDetails/{recipeId}")]
+        [HttpGet]
+        public async Task<IActionResult> SearchRecipeDetails(int recipeId)
+        {
+            try
+            {
+                var recipeDetail = await _recipeDetailsService.SearchRecipeDetails(recipeId);
                 return Ok(recipeDetail);
             }
             catch (Exception ex)
