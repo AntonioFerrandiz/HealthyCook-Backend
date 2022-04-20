@@ -4,68 +4,22 @@ using HealthyCook_Backend.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HealthyCook_Backend.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    partial class AplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220418233034_v35")]
+    partial class v35
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("HealthyCook_Backend.Domain.Models.Ingredient", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("IngredientTypeID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Unit")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("IngredientTypeID");
-
-                    b.ToTable("Ingredients");
-                });
-
-            modelBuilder.Entity("HealthyCook_Backend.Domain.Models.IngredientType", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RecipeDetailsID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("RecipeDetailsID");
-
-                    b.ToTable("IngredientTypes");
-                });
 
             modelBuilder.Entity("HealthyCook_Backend.Domain.Models.Recipe", b =>
                 {
@@ -213,30 +167,6 @@ namespace HealthyCook_Backend.Migrations
                     b.ToTable("RestaurantOwners");
                 });
 
-            modelBuilder.Entity("HealthyCook_Backend.Domain.Models.RestaurantReview", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Calification")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Commentary")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RestaurantID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("RestaurantID");
-
-                    b.ToTable("RestaurantReviews");
-                });
-
             modelBuilder.Entity("HealthyCook_Backend.Domain.Models.User", b =>
                 {
                     b.Property<int>("ID")
@@ -272,24 +202,6 @@ namespace HealthyCook_Backend.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("HealthyCook_Backend.Domain.Models.Ingredient", b =>
-                {
-                    b.HasOne("HealthyCook_Backend.Domain.Models.IngredientType", "IngredientType")
-                        .WithMany("ingredientsList")
-                        .HasForeignKey("IngredientTypeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("HealthyCook_Backend.Domain.Models.IngredientType", b =>
-                {
-                    b.HasOne("HealthyCook_Backend.Domain.Models.RecipeDetails", "RecipeDetails")
-                        .WithMany("ingredientTypes")
-                        .HasForeignKey("RecipeDetailsID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("HealthyCook_Backend.Domain.Models.Recipe", b =>
                 {
                     b.HasOne("HealthyCook_Backend.Domain.Models.User", "User")
@@ -313,15 +225,6 @@ namespace HealthyCook_Backend.Migrations
                     b.HasOne("HealthyCook_Backend.Domain.Models.RestaurantOwner", "RestaurantOwner")
                         .WithMany()
                         .HasForeignKey("RestaurantOwnerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("HealthyCook_Backend.Domain.Models.RestaurantReview", b =>
-                {
-                    b.HasOne("HealthyCook_Backend.Domain.Models.Restaurant", "Restaurant")
-                        .WithMany()
-                        .HasForeignKey("RestaurantID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
