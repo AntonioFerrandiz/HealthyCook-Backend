@@ -9,7 +9,7 @@ namespace HealthyCook_Backend.Domain.IRepositories
     public interface IRecipeDetailsRepository
     {
         Task SaveRecipeDetails(RecipeDetails recipeDetails);
-
         Task<RecipeDetails> GetRecipeDetails(int recipeID);
+        Task<RecipeDetails> SearchRecipeDetails(int recipeID);
     }
 }

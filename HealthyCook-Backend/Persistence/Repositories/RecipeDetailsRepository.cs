@@ -27,8 +27,20 @@ namespace HealthyCook_Backend.Persistence.Repositories
         {
             var recipeDetails = await _context.RecipeDetails
                 .Where(x => x.RecipeID == recipeID)
+                .Include(x => x.ingredientTypes)
+                .ThenInclude(x => x.ingredientsList)
                 .FirstOrDefaultAsync();
             return recipeDetails;
+        }
+
+        public async Task<RecipeDetails> SearchRecipeDetails(int recipeID)
+        {
+            var recipe = await _context.RecipeDetails
+                .Where(x => x.RecipeID == recipeID)
+                .Include(x => x.ingredientTypes)
+                .ThenInclude(x => x.ingredientsList)
+                .FirstOrDefaultAsync();
+            return recipe;
         }
     }
 }

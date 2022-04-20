@@ -17,10 +17,26 @@ namespace HealthyCook_Backend.Persistence.Repositories
         {
             _context = context;
         }
+
         public async Task SaveUser(User user)
         {
             _context.Add(user);
             await _context.SaveChangesAsync();
+        }
+        public async Task DeleteUser(User user)
+        {
+            _context.Entry(user).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
+        }
+
+
+
+        public async Task<User> SearchUser(int userID)
+        {
+            var user = await _context.Users
+                .Where(x => x.ID == userID)
+                .FirstOrDefaultAsync();
+            return user;
         }
 
         public async Task<bool> ValidateExistence(User user)

@@ -94,5 +94,11 @@ namespace HealthyCook_Backend.Persistence.Repositories
                 .ToListAsync();
             return recipeList;
         }
+
+        public async Task DeleteRecipe(Recipe recipe)
+        {
+            _context.Entry(recipe).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
+        }
     }
 }
