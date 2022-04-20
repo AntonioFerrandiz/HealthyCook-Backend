@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HealthyCook-Backend</name>
+    </assembly>
+    <members>
+        <member name="M:HealthyCook_Backend.Controllers.RecipeController.Post(HealthyCook_Backend.Domain.Models.Recipe)">
+            <summary>
+            Registro de receta
+            </summary>
+            <param name="recipe"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RecipeController.DeleteRecipe(System.Int32)">
+            <summary>
+            Eliminación de receta
+            </summary>
+            <param name="recipeID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RecipeController.GetRecipeByID(System.Int32)">
+            <summary>
+            Obtener receta por ID
+            </summary>
+            <param name="recipeID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RecipeController.GetListRecipes">
+            <summary>
+            Obtener lista de todas las recetas disponibles
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RecipeController.GetListRecipesPublishedByUser(System.Int32)">
+            <summary>
+            Obtener lista de las recetas publicadas por usuario
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RecipeController.GetListRecipesNoPublishedByUser(System.Int32)">
+            <summary>
+            Obtener lista de las recetas que aun no han sido publicas por usuario
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RecipeController.ChangePublicationStatus(System.Int32)">
+            <summary>
+            Cambiar estado de publicación de la receta
+            </summary>
+            <param name="recipeID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RecipeDetailsController.Post(HealthyCook_Backend.Domain.Models.RecipeDetails)">
+            <summary>
+            Registro de los detalles de la receta
+            </summary>
+            <param name="recipeDetails"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RecipeDetailsController.GetRecipeDetails(System.Int32)">
+            <summary>
+            Obtener detalles de la receta por la ID de la receta
+            </summary>
+            <param name="recipeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RecipeDetailsController.SearchRecipeDetails(System.Int32)">
+            <summary>
+            Busqueda de los detalles de la receta por la ID de la receta
+            </summary>
+            <param name="recipeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RestaurantController.Post(HealthyCook_Backend.Domain.Models.Restaurant)">
+            <summary>
+            Registro de resturante
+            </summary>
+            <param name="restaurant"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RestaurantController.DeleteRestaurant(System.Int32)">
+            <summary>
+            Eliminación de restaurante
+            </summary>
+            <param name="restaurantID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RestaurantController.GetRestaurant(System.Int32)">
+            <summary>
+            Obtener restaurante por ID
+            </summary>
+            <param name="restaurantID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RestaurantController.SearchRestaurant(System.Int32)">
+            <summary>
+            Busqueda de restaurante por ID
+            </summary>
+            <param name="restaurantID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RestaurantController.GetListRestaurants">
+            <summary>
+            Obtener lista de todos los restaurantes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RestaurantOwnerController.Post(HealthyCook_Backend.Domain.Models.RestaurantOwner)">
+            <summary>
+            Registro de dueño de restaurante 
+            </summary>
+            <param name="restaurantOwner"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RestaurantOwnerController.GetRestaurantOwner(System.Int32)">
+            <summary>
+            Buscar dueño de restaurante por ID
+            </summary>
+            <param name="restaurantOwnerID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RestaurantReviewController.Post(HealthyCook_Backend.Domain.Models.RestaurantReview)">
+            <summary>
+            Publicación de reseña hacia un restaurante
+            </summary>
+            <param name="restaurantReview"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RestaurantReviewController.DeleteRestaurantReview(System.Int32)">
+            <summary>
+            Eliminación de reseña
+            </summary>
+            <param name="restaurantReviewID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RestaurantReviewController.GetRestaurantReview(System.Int32)">
+            <summary>
+            Buscar reseña por ID
+            </summary>
+            <param name="restaurantReviewID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RestaurantReviewController.GetRestaurantReviewList(System.Int32)">
+            <summary>
+            Obtener lista de reseñas hechas a un restaurante
+            </summary>
+            <param name="restaurantID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RestaurantReviewController.SearchRestaurantReviewByCalification(System.Int32)">
+            <summary>
+            Buscar reseñas por calificación
+            </summary>
+            <param name="calification"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.UserController.Post(HealthyCook_Backend.Domain.Models.User)">
+            <summary>
+            Registro de usuario
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.UserController.DeleteUser(System.Int32)">
+            <summary>
+            Eliminar usuario
+            </summary>
+            <param name="userID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.UserController.SearchUser(System.Int32)">
+            <summary>
+            Buscar usuario por su ID
+            </summary>
+            <param name="userID"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

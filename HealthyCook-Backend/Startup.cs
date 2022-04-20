@@ -14,7 +14,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace HealthyCook_Backend
@@ -38,10 +40,14 @@ namespace HealthyCook_Backend
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRecipeService, RecipeService>();
             services.AddScoped<IRecipeDetailsService, RecipeDetailsService>();
+            services.AddScoped<IRestaurantOwnerService, RestaurantOwnerService>();
+            services.AddScoped<IRestaurantService, RestaurantService>();
             // Repository
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRecipeRepository, RecipeRepository>();
             services.AddScoped<IRecipeDetailsRepository, RecipeDetailsRepository>();
+            services.AddScoped<IRestaurantOwnerRepository, RestaurantOwnerRepository>();
+            services.AddScoped<IRestaurantRepository, RestaurantRepository>();
             // Cors
             services.AddCors(options => options.AddPolicy("AllowWebapp",
                              builder => builder.AllowAnyOrigin().
@@ -73,6 +79,10 @@ namespace HealthyCook_Backend
                         Url = new Uri("https://foo.com/"),
                     }
                 });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments(xmlPath);
             });
         }
         // ^^^^^^^^
@@ -90,6 +100,8 @@ namespace HealthyCook_Backend
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ecc API V1");
             });
+
+
             // ^^^^^^^^
             app.UseCors("AllowWebapp");
 
