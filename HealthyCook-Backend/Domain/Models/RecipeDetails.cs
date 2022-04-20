@@ -32,7 +32,7 @@ namespace HealthyCook_Backend.Domain.Models
         public int RecipeID { get; set; }
         public Recipe Recipe { get; set; }
 
-        //public List<Ingredient> ingredientsList { get; set; }
+        public List<IngredientType> ingredientTypes { get; set; }
 
 
     }

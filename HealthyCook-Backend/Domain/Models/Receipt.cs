@@ -6,17 +6,13 @@ using System.Threading.Tasks;
 
 namespace HealthyCook_Backend.Domain.Models
 {
-    public class Ingredient
+    public class Receipt
     {
         public int ID { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string Details { get; set; }
         [Required]
-        public int Quantity { get; set; }
-        [Required]
-        public int Unit { get; set; }
-        public int IngredientTypeID { get; set; }
-        public IngredientType IngredientType { get; set; }
+        public DateTime IssueDate { get; set; } 
     }
 }

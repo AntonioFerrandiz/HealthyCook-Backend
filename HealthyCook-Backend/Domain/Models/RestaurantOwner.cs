@@ -6,16 +6,20 @@ using System.Threading.Tasks;
 
 namespace HealthyCook_Backend.Domain.Models
 {
-    public class RecipeSteps
+    public class RestaurantOwner
     {
         public int ID { get; set; }
 
         [Required]
-        public int StepNumber { get; set; }
-        [Required]
-        public string Step { get; set; }
+        public string Firstname { get; set; }
 
-        public int RecipeID{ get; set; }
-        public Recipe Recipe { get; set; }
+        [Required]
+        public string Lastname { get; set; }
+
+        [Required]
+        public int Dni { get; set; }
+
+        [Required]
+        public string Email { get; set; }
     }
 }
