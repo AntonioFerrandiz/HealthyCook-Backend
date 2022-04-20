@@ -9,6 +9,7 @@ namespace HealthyCook_Backend.Domain.IServices
     public interface IRecipeService
     {
         Task CreateRecipe(Recipe recipe);
+        Task DeleteRecipe(Recipe recipe);
         Task<Recipe> GetRecipeByID(int recipeID);
         Task<Recipe> ChangePublicationStatus(int recipeID);
         Task<List<Recipe>> GetListRecipes();

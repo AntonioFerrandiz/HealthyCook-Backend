@@ -15,9 +15,20 @@ namespace HealthyCook_Backend.Services
         {
             _userRepository = userRepository;
         }
+
+        public async Task DeleteUser(User user)
+        {
+            await _userRepository.DeleteUser(user);
+        }
+
         public async Task SaveUser(User user)
         {
             await _userRepository.SaveUser(user);
+        }
+
+        public async Task<User> SearchUser(int userID)
+        {
+            return await _userRepository.SearchUser(userID);
         }
 
         public async Task<bool> ValidateExistence(User user)

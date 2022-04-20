@@ -10,5 +10,7 @@ namespace HealthyCook_Backend.Domain.IServices
     {
         Task SaveRecipeDetails(RecipeDetails recipeDetails);
         Task<RecipeDetails> GetRecipeDetails(int recipeID);
+
+        Task<RecipeDetails> SearchRecipeDetails(int recipeID);
     }
 }

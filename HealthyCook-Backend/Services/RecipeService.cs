@@ -46,5 +46,10 @@ namespace HealthyCook_Backend.Services
         {
             return await _recipeRepository.GetRecipeByID(recipeID);
         }
+
+        public async Task DeleteRecipe(Recipe recipe)
+        {
+            await _recipeRepository.DeleteRecipe(recipe);
+        }
     }
 }

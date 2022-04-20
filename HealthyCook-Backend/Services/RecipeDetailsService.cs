@@ -27,5 +27,9 @@ namespace HealthyCook_Backend.Services
             return await _recipeDetailsRepository.GetRecipeDetails(recipeID);
         }
 
+        public async Task<RecipeDetails> SearchRecipeDetails(int recipeID)
+        {
+            return await _recipeDetailsRepository.SearchRecipeDetails(recipeID);
+        }
     }
 }

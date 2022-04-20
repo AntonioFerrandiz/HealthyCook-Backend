@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace HealthyCook_Backend.Domain.IServices
 {
-    public interface IUserService
+    public interface IRestaurantOwnerService
     {
-        Task SaveUser(User user);
-        Task<bool> ValidateExistence(User user);
-
-        Task<User> SearchUser(int userID);
-        Task DeleteUser(User user);
+        Task SaveRestaurantOwner(RestaurantOwner restaurantOwner);
+        Task<RestaurantOwner> GetRestaurantOwner(int restaurantOwnerID);
     }
 }
