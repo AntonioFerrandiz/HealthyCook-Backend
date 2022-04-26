@@ -25,6 +25,13 @@ namespace HealthyCook_Backend.Persistence.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task<int> GetNumberOfRecipes()
+        {
+            var numberOfRecipes = await _context.Recipes
+                .Where(x => x.Active == 1 && x.Published == 1)
+                .CountAsync();
+            return numberOfRecipes;
+        }
         public async Task<List<Recipe>> GetListRecipes()
         {
             var recipesList = await _context.Recipes
@@ -100,5 +107,7 @@ namespace HealthyCook_Backend.Persistence.Repositories
             _context.Entry(recipe).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
         }
+
+        
     }
 }

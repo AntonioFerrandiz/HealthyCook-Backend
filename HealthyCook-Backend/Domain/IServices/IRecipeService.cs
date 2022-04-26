@@ -12,6 +12,7 @@ namespace HealthyCook_Backend.Domain.IServices
         Task DeleteRecipe(Recipe recipe);
         Task<Recipe> GetRecipeByID(int recipeID);
         Task<Recipe> ChangePublicationStatus(int recipeID);
+        Task<int> GetNumberOfRecipes();
         Task<List<Recipe>> GetListRecipes();
         Task<List<Recipe>> GetListRecipesPublishedByUser(int userID);
         Task<List<Recipe>> GetListRecipesNoPublishedByUser(int userID);

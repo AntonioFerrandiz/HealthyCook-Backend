@@ -31,9 +31,9 @@ namespace HealthyCook_Backend.Controllers
             {
                 recipe.UserID = 1;
                 recipe.Active = 1;
-                
+                recipe.Published = 0;
                 await _recipeService.CreateRecipe(recipe);
-                return Ok(new { message = "ok" });
+                return Ok(new { message = recipe.ID });
             }
             catch (Exception ex)
             {
@@ -80,6 +80,18 @@ namespace HealthyCook_Backend.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        /// <summary>
+        /// Obtener el número de la cantidad de recetas publicadas
+        /// </summary>
+        /// <returns></returns>
+        [Route("GetNumberOfRecipes")]
+        [HttpGet]
+        public async Task<int> GetNumberOfRecipes()
+        {
+            var numberOfRecipes = await _recipeService.GetNumberOfRecipes();
+            return numberOfRecipes;
         }
 
         /// <summary>
