@@ -25,6 +25,12 @@
             <param name="recipeID"></param>
             <returns></returns>
         </member>
+        <member name="M:HealthyCook_Backend.Controllers.RecipeController.GetNumberOfRecipes">
+            <summary>
+            Obtener el número de la cantidad de recetas publicadas
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:HealthyCook_Backend.Controllers.RecipeController.GetListRecipes">
             <summary>
             Obtener lista de todas las recetas disponibles
