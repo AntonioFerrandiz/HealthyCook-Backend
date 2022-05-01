@@ -82,6 +82,21 @@ namespace HealthyCook_Backend.Controllers
             }
         }
 
+        [Route("GetLastFiveRecipes")]
+        [HttpGet]
+        public async Task<IActionResult> GetLastFiveRecipes()
+        {
+            try
+            {
+                var recipeList = await _recipeService.GetLastFiveRecipes();
+                return Ok(recipeList);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         /// <summary>
         /// Obtener el número de la cantidad de recetas publicadas
         /// </summary>
