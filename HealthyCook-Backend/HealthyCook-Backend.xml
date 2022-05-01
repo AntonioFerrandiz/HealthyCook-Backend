@@ -79,6 +79,13 @@
             <param name="recipeId"></param>
             <returns></returns>
         </member>
+        <member name="M:HealthyCook_Backend.Controllers.RecipeRatingController.Post(HealthyCook_Backend.Domain.Models.RecipeRating)">
+            <summary>
+            Guardar califación de receta
+            </summary>
+            <param name="recipeRating"></param>
+            <returns></returns>
+        </member>
         <member name="M:HealthyCook_Backend.Controllers.RestaurantController.Post(HealthyCook_Backend.Domain.Models.Restaurant)">
             <summary>
             Registro de resturante
