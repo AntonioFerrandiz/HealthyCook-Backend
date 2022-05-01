@@ -42,12 +42,14 @@ namespace HealthyCook_Backend
             services.AddScoped<IRecipeDetailsService, RecipeDetailsService>();
             services.AddScoped<IRestaurantOwnerService, RestaurantOwnerService>();
             services.AddScoped<IRestaurantService, RestaurantService>();
+            services.AddScoped<IRecipeRatingService, RecipeRatingService>();
             // Repository
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRecipeRepository, RecipeRepository>();
             services.AddScoped<IRecipeDetailsRepository, RecipeDetailsRepository>();
             services.AddScoped<IRestaurantOwnerRepository, RestaurantOwnerRepository>();
             services.AddScoped<IRestaurantRepository, RestaurantRepository>();
+            services.AddScoped<IRecipeRatingRepository, RecipeRatingRepository>();
             // Cors
             services.AddCors(options => options.AddPolicy("AllowWebapp",
                              builder => builder.AllowAnyOrigin().
