@@ -32,6 +32,14 @@ namespace HealthyCook_Backend.Persistence.Repositories
                 .CountAsync();
             return numberOfRecipes;
         }
+        public async Task<List<Recipe>> GetLastFiveRecipes()
+        {
+            var recipesList = await _context.Recipes
+                .FromSqlRaw("select top 5  r.ID, r.Name, r.Description, r.Preparation, r.Active, r.Published, r.UserID, rd.DateCreated, rd.PreparationTime, rd.TimePeriod, rd.Servings, rd.Difficulty, rd.Calories " +
+                "from [dbo].[RecipeDetails] as rd left outer join [dbo].[Recipes] as r on rd.RecipeID = r.ID")
+                .ToListAsync();
+            return recipesList;
+        }
         public async Task<List<Recipe>> GetListRecipes()
         {
             var recipesList = await _context.Recipes
@@ -108,6 +116,6 @@ namespace HealthyCook_Backend.Persistence.Repositories
             await _context.SaveChangesAsync();
         }
 
-        
+
     }
 }
