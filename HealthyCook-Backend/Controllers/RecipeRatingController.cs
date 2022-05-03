@@ -58,6 +58,11 @@ namespace HealthyCook_Backend.Controllers
             }
         }
 
+        /// <summary>
+        /// Obtener el promedio de rating de una receta por recipeID
+        /// </summary>
+        /// <param name="RecipeID"></param>
+        /// <returns></returns>
         [Route("GetAverageRatingOfRecipe/{RecipeID}")]
         [HttpGet]
         public async Task<int> GetAverageRatingOfRecipe(int RecipeID)
