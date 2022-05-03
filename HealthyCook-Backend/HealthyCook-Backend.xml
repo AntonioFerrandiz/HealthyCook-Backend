@@ -86,6 +86,13 @@
             <param name="recipeRating"></param>
             <returns></returns>
         </member>
+        <member name="M:HealthyCook_Backend.Controllers.RecipeRatingController.GetRatingByRecipe(System.Int32)">
+            <summary>
+            Obtener todas las puntuaciones hechas hacia una receta
+            </summary>
+            <param name="RecipeID"></param>
+            <returns></returns>
+        </member>
         <member name="M:HealthyCook_Backend.Controllers.RestaurantController.Post(HealthyCook_Backend.Domain.Models.Restaurant)">
             <summary>
             Registro de resturante

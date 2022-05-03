@@ -36,5 +36,41 @@ namespace HealthyCook_Backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+
+        /// <summary>
+        /// Obtener todas las puntuaciones hechas hacia una receta
+        /// </summary>
+        /// <param name="RecipeID"></param>
+        /// <returns></returns>
+        [Route("GetRatingByRecipe/{RecipeID}")]
+        [HttpGet]
+        public async Task<IActionResult> GetRatingByRecipe(int RecipeID)
+        {
+            try
+            {
+                var ratingList = await _recipeRatingService.GetRatingByRecipe(RecipeID);
+                return Ok(ratingList);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Route("GetAverageRatingOfRecipe/{RecipeID}")]
+        [HttpGet]
+        public async Task<int> GetAverageRatingOfRecipe(int RecipeID)
+        {
+            try
+            {
+                var ratingAvg = await _recipeRatingService.GetAverageRatingOfRecipe(RecipeID);
+                return ratingAvg;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

@@ -17,6 +17,16 @@ namespace HealthyCook_Backend.Services
             _recipeRatingRepository = recipeRatingRepository;
         }
 
+        public async Task<int> GetAverageRatingOfRecipe(int RecipeID)
+        {
+            return await _recipeRatingRepository.GetAverageRatingOfRecipe(RecipeID);
+        }
+
+        public async Task<List<RecipeRating>> GetRatingByRecipe(int RecipeID)
+        {
+            return await _recipeRatingRepository.GetRatingByRecipe(RecipeID);
+        }
+
         public async Task SaveRecipeRating(RecipeRating recipeRating)
         {
             await _recipeRatingRepository.SaveRecipeRating(recipeRating);

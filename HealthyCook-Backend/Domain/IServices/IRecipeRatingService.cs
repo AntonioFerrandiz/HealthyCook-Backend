@@ -9,5 +9,7 @@ namespace HealthyCook_Backend.Domain.IServices
     public interface IRecipeRatingService
     {
         Task SaveRecipeRating(RecipeRating recipeRating);
+        Task<List<RecipeRating>> GetRatingByRecipe(int RecipeID);
+        Task<int> GetAverageRatingOfRecipe(int RecipeID);
     }
 }
