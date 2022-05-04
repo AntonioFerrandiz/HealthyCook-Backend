@@ -93,6 +93,13 @@
             <param name="RecipeID"></param>
             <returns></returns>
         </member>
+        <member name="M:HealthyCook_Backend.Controllers.RecipeRatingController.GetAverageRatingOfRecipe(System.Int32)">
+            <summary>
+            Obtener el promedio de rating de una receta por recipeID
+            </summary>
+            <param name="RecipeID"></param>
+            <returns></returns>
+        </member>
         <member name="M:HealthyCook_Backend.Controllers.RestaurantController.Post(HealthyCook_Backend.Domain.Models.Restaurant)">
             <summary>
             Registro de resturante
@@ -183,16 +190,23 @@
             <param name="user"></param>
             <returns></returns>
         </member>
-        <member name="M:HealthyCook_Backend.Controllers.UserController.DeleteUser(System.Int32)">
+        <member name="M:HealthyCook_Backend.Controllers.UserController.ValidateEmail(System.String)">
             <summary>
-            Eliminar usuario
+            Metodo para verificar si un email se encuentra en uso o no
             </summary>
-            <param name="userID"></param>
+            <param name="email"></param>
             <returns></returns>
         </member>
         <member name="M:HealthyCook_Backend.Controllers.UserController.SearchUser(System.Int32)">
             <summary>
             Buscar usuario por su ID
+            </summary>
+            <param name="userID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.UserController.DeleteUser(System.Int32)">
+            <summary>
+            Eliminar usuario
             </summary>
             <param name="userID"></param>
             <returns></returns>
