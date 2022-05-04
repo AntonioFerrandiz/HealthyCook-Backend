@@ -10,7 +10,7 @@ namespace HealthyCook_Backend.Domain.IServices
     {
         Task SaveUser(User user);
         Task<bool> ValidateExistence(User user);
-
+        Task<bool> ValidateEmail(string email);
         Task<User> SearchUser(int userID);
         Task DeleteUser(User user);
     }

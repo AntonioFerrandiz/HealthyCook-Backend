@@ -34,10 +34,51 @@ namespace HealthyCook_Backend.Controllers
                 {
                     return BadRequest(new { message = "El usuario " + user.Username + " ya existe" });
                 }
+                var validateEmail = await _userService.ValidateEmail(user.Email);
+                if (validateEmail)
+                {
+                    return BadRequest(new { message = "El email " + user.Email + " ya se encuentra en uso" });
+                }
                 user.Password = Encrypt.EncryptPassword(user.Password);
                 user.DateCreated = DateTime.Now;
                 await _userService.SaveUser(user);
                 return Ok(new { message = "Usuario registrado con exito." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Metodo para verificar si un email se encuentra en uso o no
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        [Route("VerifyEmail/{email}")]
+        [HttpGet]
+        public async Task<string> ValidateEmail(string email)
+        {
+
+            var verifyEmail = await _userService.ValidateEmail(email);
+            if (verifyEmail) return "El email " + email + " se encuentra en uso";
+            return "Email disponible";
+
+        }
+
+        /// <summary>
+        /// Buscar usuario por su ID
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        [Route("SearchUser/{userID}")]
+        [HttpGet]
+        public async Task<IActionResult> SearchUser(int userID)
+        {
+            try
+            {
+                var patient = await _userService.SearchUser(userID);
+                return Ok(patient);
             }
             catch (Exception ex)
             {
@@ -66,24 +107,6 @@ namespace HealthyCook_Backend.Controllers
             }
         }
 
-        /// <summary>
-        /// Buscar usuario por su ID
-        /// </summary>
-        /// <param name="userID"></param>
-        /// <returns></returns>
-        [Route("SearchUser/{userID}")]
-        [HttpGet]
-        public async Task<IActionResult> SearchUser(int userID)
-        {
-            try
-            {
-                var patient = await _userService.SearchUser(userID);
-                return Ok(patient);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+
     }
 }

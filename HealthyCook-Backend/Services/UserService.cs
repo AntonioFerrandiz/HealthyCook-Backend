@@ -31,6 +31,11 @@ namespace HealthyCook_Backend.Services
             return await _userRepository.SearchUser(userID);
         }
 
+        public async Task<bool> ValidateEmail(string email)
+        {
+            return await _userRepository.ValidateEmail(email);
+        }
+
         public async Task<bool> ValidateExistence(User user)
         {
             return await _userRepository.ValidateExistence(user);

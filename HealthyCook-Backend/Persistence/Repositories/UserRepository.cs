@@ -45,5 +45,12 @@ namespace HealthyCook_Backend.Persistence.Repositories
                 .AnyAsync(x => x.Username == user.Username);
             return validateExistence;
         }
+
+        public async Task<bool> ValidateEmail(string email)
+        {
+            var validateEmail = await _context.Users
+                .AnyAsync(x => x.Email == email);
+            return validateEmail;
+        }
     }
 }
