@@ -78,7 +78,7 @@ namespace HealthyCook_Backend
                     {
                         Name = "EveryCanCook Company",
                         Email = string.Empty,
-                        Url = new Uri("https://foo.com/"),
+                        Url = new Uri("https://everycancook.github.io/Landing-Page-EveryCanCook/"),
                     }
                 });
 
