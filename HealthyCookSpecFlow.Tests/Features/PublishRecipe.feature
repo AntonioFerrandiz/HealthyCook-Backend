@@ -12,6 +12,8 @@ Scenario: User add new recipe in the application
 Scenario: User add recipe to application, but does not complete required fields
 	Given a user wants to add a recipe
 	And does not complete the recipe description field
+	| Name            | Description                                                 | Preparation                            |
+	| Arroz con leche |																| Pasos para preparar el arroz con leche |
 	Then an error message will be displayed
 	| Message Error                    |
 	| Falta completar la descripción de la receta | 

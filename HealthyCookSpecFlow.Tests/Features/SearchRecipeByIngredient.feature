@@ -21,6 +21,8 @@ Scenario: User selects an ingredient and does not find recipes
 
 Scenario: User does not select any ingredient 
 	Given user searches for recipes without selecting ingredients
+	| Ingredient |
+	|            |
 	Then a warning message will be displayed
 	| Warning Message                           |
 	| Debes seleccionar al menos un ingrediente | 
