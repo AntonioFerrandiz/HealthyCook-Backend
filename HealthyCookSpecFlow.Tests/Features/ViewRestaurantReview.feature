@@ -13,6 +13,8 @@ Scenario: The owner of the restaurant can view all the reviews made by his custo
 Scenario: The restaurant has no reviews
 	Given that the owner of the restaurant is in the reviews section
 	And there are no reviews
+	| Reviews |
+	|         |	
 	Then a message will  be displayed
 	| Message                   |
 	| Por el momento no hay ninguna reseña | 
