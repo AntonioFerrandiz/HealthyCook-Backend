@@ -60,5 +60,10 @@ namespace HealthyCook_Backend.Services
         {
             return await _recipeRepository.GetLastFiveRecipes();
         }
+
+        public async Task<List<Recipe>> GetTodaysRecipes(string date)
+        {
+            return await _recipeRepository.GetTodaysRecipes(date);
+        }
     }
 }
