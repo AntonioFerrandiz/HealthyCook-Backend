@@ -82,6 +82,21 @@ namespace HealthyCook_Backend.Controllers
             }
         }
 
+        [Route("GetTodaysRecipes/{date}")]
+        [HttpGet]
+        public async Task<IActionResult> GetTodaysRecipes(string date)
+        {
+            try
+            {
+                var recipeList = await _recipeService.GetTodaysRecipes(date);
+                return Ok(recipeList);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [Route("GetLastFiveRecipes")]
         [HttpGet]
         public async Task<IActionResult> GetLastFiveRecipes()
