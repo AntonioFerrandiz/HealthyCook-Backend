@@ -9,7 +9,7 @@ namespace HealthyCook_Backend.Domain.Models
     public class RecipeDetails
     {
         public int ID { get; set; }
-        public DateTime DateCreated { get; set; }
+        
 
         [Required]
         public string Difficulty { get; set; }

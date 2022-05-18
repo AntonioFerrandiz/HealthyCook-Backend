@@ -10,6 +10,10 @@ namespace HealthyCook_Backend.Domain.Models
     public class Recipe
     {
         public int ID { get; set; }
+
+        
+        public string DateCreated { get; set; }
+
         public int Active { get; set; }
 
         public int Published { get; set; }

@@ -43,6 +43,7 @@ namespace HealthyCook_Backend
             services.AddScoped<IRestaurantOwnerService, RestaurantOwnerService>();
             services.AddScoped<IRestaurantService, RestaurantService>();
             services.AddScoped<IRecipeRatingService, RecipeRatingService>();
+            services.AddScoped<IRecipesSavedService, RecipesSavedService>();
             // Repository
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRecipeRepository, RecipeRepository>();
@@ -50,6 +51,7 @@ namespace HealthyCook_Backend
             services.AddScoped<IRestaurantOwnerRepository, RestaurantOwnerRepository>();
             services.AddScoped<IRestaurantRepository, RestaurantRepository>();
             services.AddScoped<IRecipeRatingRepository, RecipeRatingRepository>();
+            services.AddScoped<IRecipesSavedRepository, RecipesSavedRepository>();
             // Cors
             services.AddCors(options => options.AddPolicy("AllowWebapp",
                              builder => builder.AllowAnyOrigin().

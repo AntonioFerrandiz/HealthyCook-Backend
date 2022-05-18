@@ -12,6 +12,14 @@
   <ItemGroup>
     <Compile Remove="Migrations\20220420190120_v1.cs" />
     <Compile Remove="Migrations\20220420190120_v1.Designer.cs" />
+    <Compile Remove="Migrations\20220508062807_v5.cs" />
+    <Compile Remove="Migrations\20220508062807_v5.Designer.cs" />
+    <Compile Remove="Migrations\20220508062955_v5.cs" />
+    <Compile Remove="Migrations\20220508062955_v5.Designer.cs" />
+    <Compile Remove="Migrations\20220508063253_v6.cs" />
+    <Compile Remove="Migrations\20220508063253_v6.Designer.cs" />
+    <Compile Remove="Migrations\20220508063854_v6.cs" />
+    <Compile Remove="Migrations\20220508063854_v6.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

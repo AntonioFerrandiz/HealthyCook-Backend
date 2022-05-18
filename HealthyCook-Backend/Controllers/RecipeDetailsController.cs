@@ -29,7 +29,7 @@ namespace HealthyCook_Backend.Controllers
         {
             try
             {
-                recipeDetails.DateCreated = DateTime.Now;
+                //recipeDetails.DateCreated = DateTime.Now;
                 await _recipeDetailsService.SaveRecipeDetails(recipeDetails);
                 return Ok(new { message = "ok recipe details" });
 

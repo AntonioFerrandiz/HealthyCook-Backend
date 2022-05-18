@@ -11,6 +11,7 @@ namespace HealthyCook_Backend.Persistence.Context
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<RecipesSaved> RecipesSaveds { get; set; }
         public DbSet<RecipeRating> RecipeRatings { get; set; }
         public DbSet<RecipeDetails> RecipeDetails { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
