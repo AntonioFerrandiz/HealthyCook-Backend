@@ -107,20 +107,13 @@ namespace HealthyCook_Backend.Persistence.Repositories
                 .ToListAsync();
             return recipeList;
         }
-        public async Task<List<Recipe>> GetTodaysRecipes(string date)
-        {
-            var todayDate = DateTime.Now.ToString("dd-MM-yyyy");
-            var recipeList = await _context.Recipes
-                .Where(x => x.Published == 1 && x.Active == 1 && x.DateCreated == todayDate)
-                .ToListAsync();
-            return recipeList;
-        }
+
         public async Task DeleteRecipe(Recipe recipe)
         {
             _context.Entry(recipe).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
         }
 
-        
+
     }
 }

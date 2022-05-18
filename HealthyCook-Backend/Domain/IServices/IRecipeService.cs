@@ -15,7 +15,6 @@ namespace HealthyCook_Backend.Domain.IServices
         Task<int> GetNumberOfRecipes();
         Task<List<Recipe>> GetLastFiveRecipes();
         Task<List<Recipe>> GetListRecipes();
-        Task<List<Recipe>> GetTodaysRecipes(string date);
         Task<List<Recipe>> GetListRecipesPublishedByUser(int userID);
         Task<List<Recipe>> GetListRecipesNoPublishedByUser(int userID);
     }
