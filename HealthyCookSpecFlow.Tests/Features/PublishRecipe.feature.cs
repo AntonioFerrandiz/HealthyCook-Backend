@@ -154,15 +154,23 @@ this.ScenarioInitialize(scenarioInfo);
 #line 13
  testRunner.Given("a user wants to add a recipe", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 14
- testRunner.And("does not complete the recipe description field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
                 TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Message Error"});
+                            "Name",
+                            "Description",
+                            "Preparation"});
                 table2.AddRow(new string[] {
+                            "Arroz con leche",
+                            "",
+                            "Pasos para preparar el arroz con leche"});
+#line 14
+ testRunner.And("does not complete the recipe description field", ((string)(null)), table2, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Message Error"});
+                table3.AddRow(new string[] {
                             "Falta completar la descripción de la receta"});
-#line 15
- testRunner.Then("an error message will be displayed", ((string)(null)), table2, "Then ");
+#line 17
+ testRunner.Then("an error message will be displayed", ((string)(null)), table3, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
