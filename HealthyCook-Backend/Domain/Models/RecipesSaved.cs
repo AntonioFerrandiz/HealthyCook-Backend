@@ -10,6 +10,7 @@ namespace HealthyCook_Backend.Domain.Models
     public class RecipesSaved
     {
 
+
         public int ID { get; set; }
 
         public User User { get; set; }

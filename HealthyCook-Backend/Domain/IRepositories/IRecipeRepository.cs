@@ -8,6 +8,7 @@ namespace HealthyCook_Backend.Domain.IRepositories
 {
     public interface IRecipeRepository
     {
+
         Task CreateRecipe(Recipe recipe);
         Task DeleteRecipe(Recipe recipe);
         Task<Recipe> GetRecipeByID(int recipeID);

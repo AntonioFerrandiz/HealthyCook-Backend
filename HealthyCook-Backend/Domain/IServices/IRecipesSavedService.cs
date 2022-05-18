@@ -8,6 +8,7 @@ namespace HealthyCook_Backend.Domain.IServices
 {
     public interface IRecipesSavedService
     {
+
         Task SaveRecipeSaved(RecipesSaved recipesSaved);
         Task<List<RecipesSaved>> GetRecipesSaveByUserID(int userID);
     }

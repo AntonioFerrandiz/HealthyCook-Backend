@@ -11,6 +11,7 @@ namespace HealthyCook_Backend.Domain.Models
         public int ID { get; set; }
         
 
+
         [Required]
         public string Difficulty { get; set; }
 

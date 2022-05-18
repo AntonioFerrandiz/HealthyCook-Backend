@@ -8,7 +8,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>D:\Universidad\Ciclo 2022-01\Evolución de Software\HealthyCook\Backend\HealthyCook-Backend\HealthyCook-Backend\HealthyCook-Backend.xml</DocumentationFile>
   </PropertyGroup>
-
+	
   <ItemGroup>
     <Compile Remove="Migrations\20220420190120_v1.cs" />
     <Compile Remove="Migrations\20220420190120_v1.Designer.cs" />

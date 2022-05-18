@@ -25,7 +25,6 @@ namespace HealthyCook_Backend.Persistence.Repositories
                 .ToListAsync();
             return listRecipesSaved;
         }
-
         public async Task SaveRecipeSaved(RecipesSaved recipesSaved)
         {
             _context.Add(recipesSaved);

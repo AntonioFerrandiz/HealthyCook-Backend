@@ -20,8 +20,6 @@ namespace HealthyCook_Backend.Persistence.Context
         public DbSet<IngredientType> IngredientTypes { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
         public AplicationDbContext(DbContextOptions<AplicationDbContext> options) : base(options)
-        {
-
-        }
+        {}
     }
 }

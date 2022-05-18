@@ -17,8 +17,6 @@ namespace HealthyCook_Backend.Persistence.Repositories
             _context = context;
         }
 
-
-
         public async Task CreateRecipe(Recipe recipe)
         {
             _context.Add(recipe);

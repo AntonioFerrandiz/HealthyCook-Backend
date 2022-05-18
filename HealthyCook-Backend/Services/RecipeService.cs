@@ -17,7 +17,6 @@ namespace HealthyCook_Backend.Services
         {
             _recipeRepository = recipeRepository;
         }
-
         public async Task<Recipe> ChangePublicationStatus(int recipeID)
         {
             return await _recipeRepository.ChangePublicationStatus(recipeID);
