@@ -15,7 +15,7 @@ namespace HealthyCook_Backend.Domain.Models
         [Required]
         public int Quantity { get; set; }
         [Required]
-        public int Unit { get; set; }
+        public string Unit { get; set; }
         public int IngredientTypeID { get; set; }
         public IngredientType IngredientType { get; set; }
     }
