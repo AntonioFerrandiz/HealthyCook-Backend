@@ -31,7 +31,7 @@ namespace HealthyCook_Backend.Controllers
             try
             {
                 await _recipeDetailsService.SaveRecipeDetails(recipeDetails);
-                return Ok(new { message = "ok recipe details" });
+                return Ok(recipeDetails);
 
             }
             catch (Exception ex)
