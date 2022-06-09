@@ -19,5 +19,6 @@ namespace HealthyCook_Backend.Domain.IRepositories
         Task<List<Recipe>> GetLastFiveRecipes();
         Task<List<Recipe>> GetListRecipesPublishedByUser(int userID);
         Task<List<Recipe>> GetListRecipesNoPublishedByUser(int userID);
+        Task<List<Recipe>> SearchRecipeByIngredient(string ingredient);
     }
 }

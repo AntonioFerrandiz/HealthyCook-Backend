@@ -183,6 +183,21 @@ namespace HealthyCook_Backend.Controllers
             }
         }
 
+        [Route("SearchRecipeByIngredient/{ingredient}")]
+        [HttpGet]
+        public async Task<IActionResult> SearchRecipeByIngredient(string ingredient)
+        {
+            try
+            {
+                var recipeList = await _recipeService.SearchRecipeByIngredient(ingredient);
+                return Ok(recipeList);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         /// <summary>
         /// Cambiar estado de publicación de la receta
         /// </summary>
