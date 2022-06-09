@@ -1,26 +1,20 @@
-# NuGet restore
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
-WORKDIR /src
-ENTRYPOINT ["dotnet", "SampleAppForDocker.dll"]
-COPY *.sln .
-COPY HealthyCook-Backend/*.csproj HealthyCook-Backend/
-COPY HealthyCookSpecFlow.Tests/*.csproj HealthyCookSpecFlow.Tests/
-RUN dotnet restore
-COPY . .
-
-# testing
-FROM build AS testing
-WORKDIR /src/HealthyCook-Backend
-RUN dotnet build
-
-# publish
-FROM build AS publish
-WORKDIR /src/HealthyCook-Backend
-RUN dotnet publish -c Release -o /src/publish
-
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:3.1 AS base
 WORKDIR /app
-COPY --from=publish /src/publish .
-# ENTRYPOINT ["dotnet", "Colors.API.dll"]
-# heroku uses the following
+EXPOSE 80
+
+FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
+WORKDIR /src
+COPY ["HealthyCook-Backend/HealthyCook-Backend.csproj", "HealthyCook-Backend/"]
+RUN dotnet restore "HealthyCook-Backend/HealthyCook-Backend.csproj"
+COPY . .
+WORKDIR "/src/HealthyCook-Backend"
+RUN dotnet build "HealthyCook-Backend.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "HealthyCook-Backend.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+#ENTRYPOINT ["dotnet", "HealthyCook-Backend.dll"]
 CMD ASPNETCORE_URLS=http://*:$PORT dotnet HealthyCook-Backend.dll
