@@ -48,5 +48,13 @@ namespace HealthyCook_Backend.Controllers
             }
         }
 
+        [Route("VerifyRecipeSaved/{recipeID}/{userID}")]
+        [HttpGet]
+        public async Task<bool> VerifyRecipeSaved(int recipeID, int userID)
+        {
+            var verify = await _recipesSavedService.VerifyRecipeSaved(recipeID, 1);
+            return verify;
+        }
+
     }
 }

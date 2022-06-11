@@ -30,5 +30,12 @@ namespace HealthyCook_Backend.Persistence.Repositories
             _context.Add(recipesSaved);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<bool> VerifyRecipeSaved(int recipeID, int userID)
+        {
+            var verify = await _context.RecipesSaveds
+                .AnyAsync(x => x.UserID == userID && x.RecipeSavedID == recipeID);
+            return verify;
+        }
     }
 }

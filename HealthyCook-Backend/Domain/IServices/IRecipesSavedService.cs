@@ -11,5 +11,6 @@ namespace HealthyCook_Backend.Domain.IServices
 
         Task SaveRecipeSaved(RecipesSaved recipesSaved);
         Task<List<RecipesSaved>> GetRecipesSaveByUserID(int userID);
+        Task<bool> VerifyRecipeSaved(int recipeID, int userID);
     }
 }

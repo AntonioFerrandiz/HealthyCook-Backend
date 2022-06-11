@@ -24,5 +24,10 @@ namespace HealthyCook_Backend.Services
         {
             await _recipesSavedRepository.SaveRecipeSaved(recipesSaved);
         }
+
+        public async Task<bool> VerifyRecipeSaved(int recipeID, int userID)
+        {
+            return await _recipesSavedRepository.VerifyRecipeSaved(recipeID, userID);
+        }
     }
 }
