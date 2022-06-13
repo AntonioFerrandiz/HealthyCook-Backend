@@ -20,23 +20,22 @@ namespace HealthyCookSpecFlow.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("PublishRecipe")]
-    public partial class PublishRecipeFeature
+    [NUnit.Framework.DescriptionAttribute("SearchNearbyRestaurants")]
+    public partial class SearchNearbyRestaurantsFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "PublishRecipe.feature"
+#line 1 "SearchNearbyRestaurants.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "PublishRecipe", "\tAs a user I want to publish a recipe on the platform so that others can learn ne" +
-                    "w recipes.", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "SearchNearbyRestaurants", "\tAs a user I want to search for restaurants near my current location.", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -75,14 +74,14 @@ namespace HealthyCookSpecFlow.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("User add new recipe in the application")]
-        [NUnit.Framework.CategoryAttribute("publishRecipe")]
-        public virtual void UserAddNewRecipeInTheApplication()
+        [NUnit.Framework.DescriptionAttribute("User searches for restaurants near him")]
+        [NUnit.Framework.CategoryAttribute("searchNearbyRestaurants")]
+        public virtual void UserSearchesForRestaurantsNearHim()
         {
             string[] tagsOfScenario = new string[] {
-                    "publishRecipe"};
+                    "searchNearbyRestaurants"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User add new recipe in the application", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User searches for restaurants near him", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -104,33 +103,34 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 6
- testRunner.Given("a user wants to add a recipe", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("that the user is in the restaurants section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Name",
-                            "Description",
-                            "Preparation"});
-                table3.AddRow(new string[] {
-                            "Arroz con leche",
-                            "El arroz con leche es un postre típico de la gastronomía...",
-                            "Pasos para preparar el arroz con leche"});
 #line 7
- testRunner.When("user add a new recipe", ((string)(null)), table3, "When ");
+ testRunner.When("the user goes to the search bar for restaurants", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 10
- testRunner.Then("the recipe will be published successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Restaurant Name",
+                            "Ubication"});
+                table9.AddRow(new string[] {
+                            "Polleria Pollito",
+                            "a 1km"});
+                table9.AddRow(new string[] {
+                            "Menú Lola",
+                            "a 500m"});
+#line 8
+ testRunner.Then("will then be presented with restaurants near your current location", ((string)(null)), table9, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("User add recipe to application, but does not complete required fields")]
-        public virtual void UserAddRecipeToApplicationButDoesNotCompleteRequiredFields()
+        [NUnit.Framework.DescriptionAttribute("User searches for restaurants near him but there are no restaurants near him")]
+        public virtual void UserSearchesForRestaurantsNearHimButThereAreNoRestaurantsNearHim()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User add recipe to application, but does not complete required fields", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User searches for restaurants near him but there are no restaurants near him", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 12
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -152,25 +152,20 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 13
- testRunner.Given("a user wants to add a recipe", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("that the user is in the restaurants section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Name",
-                            "Description",
-                            "Preparation"});
-                table4.AddRow(new string[] {
-                            "Arroz con leche",
-                            "",
-                            "Pasos para preparar el arroz con leche"});
 #line 14
- testRunner.And("does not complete the recipe description field", ((string)(null)), table4, "And ");
+ testRunner.When("the user goes to the search bar for restaurants", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Message Error"});
-                table5.AddRow(new string[] {
-                            "Falta completar la descripción de la receta"});
-#line 17
- testRunner.Then("an error message will be displayed", ((string)(null)), table5, "Then ");
+#line 15
+ testRunner.And("there is no restaurant near your location", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Message"});
+                table10.AddRow(new string[] {
+                            "No hay ningún restaurante cerca a tu ubicación actual"});
+#line 16
+ testRunner.Then("the user will then be notified that there is no restaurant available nearby.", ((string)(null)), table10, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
