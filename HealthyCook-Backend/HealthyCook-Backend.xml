@@ -4,6 +4,27 @@
         <name>HealthyCook-Backend</name>
     </assembly>
     <members>
+        <member name="M:HealthyCook_Backend.Controllers.ExcludedIngredientsController.Post(HealthyCook_Backend.Domain.Models.ExcludedIngredients)">
+            <summary>
+            Agregar un nuevo ingrediente a la lista de ingredientes excluidos
+            </summary>
+            <param name="excludedIngredients"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.ExcludedIngredientsController.GetListExcludedIngredientsByUser(System.Int32)">
+            <summary>
+            Obtener todos los ingredientes excluidos por el usuario
+            </summary>
+            <param name="userID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.ExcludedIngredientsController.RemoveExcludedIngredient(System.Int32)">
+            <summary>
+            Remover un ingrediente excluido de la lista de un usuario
+            </summary>
+            <param name="excludedIngredientID"></param>
+            <returns></returns>
+        </member>
         <member name="M:HealthyCook_Backend.Controllers.RecipeController.Post(HealthyCook_Backend.Domain.Models.Recipe)">
             <summary>
             Registro de receta
