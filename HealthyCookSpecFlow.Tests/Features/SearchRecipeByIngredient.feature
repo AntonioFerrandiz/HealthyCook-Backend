@@ -18,7 +18,20 @@ Scenario: User selects an ingredient and does not find recipes
 	Then a message will be displayed
 	| Message                                         |
 	| No se han encontrado recetas que contengan kiwi | 
-
+Scenario: Recipes obtained in the search contain an ingredient excluded by the user.
+	Given that the user searches for recipes containing chicken
+	When recipes are obtained
+	And identify which of these contain an excluded ingredient.
+	| Excluded Ingredients |
+	| Mani                 |
+	| Huevo                | 
+	Then It will then show a list of recipes allowed for the user 
+	| Recipe Name | Description                                    |
+	| Pollo verde | Pollo verde bien rico y facil de preparar      |
+	| Pollo frito | Pollito frito, cualquiera prepara esta delicia | 
+	And another list of recipes excluded by the user's preferences.
+	| Excluded Recipes |
+	| Pollo al mani    |  
 Scenario: User does not select any ingredient 
 	Given user searches for recipes without selecting ingredients
 	| Ingredient |

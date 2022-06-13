@@ -53,5 +53,37 @@ namespace HealthyCookSpecFlow.Tests.Steps
         {
             ScenarioContext.Current.Pending();
         }
+
+
+        [Given(@"that the user searches for recipes containing chicken")]
+        public void GivenThatTheUserSearchesForRecipesContainingChicken()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [When(@"recipes are obtained")]
+        public void WhenRecipesAreObtained()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [When(@"identify which of these contain an excluded ingredient\.")]
+        public void WhenIdentifyWhichOfTheseContainAnExcludedIngredient_(Table table)
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [Then(@"It will then show a list of recipes allowed for the user")]
+        public void ThenItWillThenShowAListOfRecipesAllowedForTheUser(Table table)
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [Then(@"another list of recipes excluded by the user's preferences\.")]
+        public void ThenAnotherListOfRecipesExcludedByTheUserSPreferences_(Table table)
+        {
+            ScenarioContext.Current.Pending();
+        }
+
     }
 }
