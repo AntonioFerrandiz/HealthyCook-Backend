@@ -18,6 +18,14 @@ namespace HealthyCook_Backend.Persistence.Repositories
             _context = context;
         }
 
+        public async Task<RecipesSaved> GetRecipeSaved(int recipeSavedID)
+        {
+            var recipeSaved = await _context.RecipesSaveds
+                .Where(x => x.ID == recipeSavedID)
+                .FirstOrDefaultAsync();
+            return recipeSaved;
+        }
+
         public async Task<List<RecipesSaved>> GetRecipesSaveByUserID(int userID)
         {
             var listRecipesSaved = await _context.RecipesSaveds
@@ -25,6 +33,13 @@ namespace HealthyCook_Backend.Persistence.Repositories
                 .ToListAsync();
             return listRecipesSaved;
         }
+
+        public async Task RemoveRecipeSaved(RecipesSaved recipesSaved)
+        {
+            _context.Entry(recipesSaved).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
+        }
+
         public async Task SaveRecipeSaved(RecipesSaved recipesSaved)
         {
             _context.Add(recipesSaved);

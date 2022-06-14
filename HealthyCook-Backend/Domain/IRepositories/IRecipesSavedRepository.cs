@@ -9,7 +9,8 @@ namespace HealthyCook_Backend.Domain.IRepositories
     public interface IRecipesSavedRepository
     {
         Task SaveRecipeSaved(RecipesSaved recipesSaved);
-
+        Task RemoveRecipeSaved(RecipesSaved recipesSaved);
+        Task<RecipesSaved> GetRecipeSaved(int recipeSavedID);
         Task<List<RecipesSaved>> GetRecipesSaveByUserID(int userID);
         Task<bool> VerifyRecipeSaved(int recipeID, int userID);
     }

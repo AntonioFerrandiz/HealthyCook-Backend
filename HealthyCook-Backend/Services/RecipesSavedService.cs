@@ -16,10 +16,22 @@ namespace HealthyCook_Backend.Services
         {
             _recipesSavedRepository = recipesSavedRepository;
         }
+
+        public async Task<RecipesSaved> GetRecipeSaved(int recipeSavedID)
+        {
+            return await _recipesSavedRepository.GetRecipeSaved(recipeSavedID);
+        }
+
         public async Task<List<RecipesSaved>> GetRecipesSaveByUserID(int userID)
         {
             return await _recipesSavedRepository.GetRecipesSaveByUserID(userID); 
         }
+
+        public async Task RemoveRecipeSaved(RecipesSaved recipesSaved)
+        {
+            await _recipesSavedRepository.RemoveRecipeSaved(recipesSaved);
+        }
+
         public async Task SaveRecipeSaved(RecipesSaved recipesSaved)
         {
             await _recipesSavedRepository.SaveRecipeSaved(recipesSaved);

@@ -20,7 +20,7 @@
         </member>
         <member name="M:HealthyCook_Backend.Controllers.ExcludedIngredientsController.RemoveExcludedIngredient(System.Int32)">
             <summary>
-            Remover un ingrediente excluido de la lista de un usuario
+            Remover un ingrediente excluido de la lista
             </summary>
             <param name="excludedIngredientID"></param>
             <returns></returns>
@@ -119,6 +119,28 @@
             Obtener el promedio de rating de una receta por recipeID
             </summary>
             <param name="RecipeID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RecipesSavedController.Post(HealthyCook_Backend.Domain.Models.RecipesSaved)">
+            <summary>
+            Agregar receta a lista de recetas de recetas guardadas
+            </summary>
+            <param name="recipesSaved"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RecipesSavedController.GetRecipesSavedByUserID(System.Int32)">
+            <summary>
+            Obtener recetas guardadas mediante la id del usuario
+            </summary>
+            <param name="userID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthyCook_Backend.Controllers.RecipesSavedController.VerifyRecipeSaved(System.Int32,System.Int32)">
+            <summary>
+            Método para verificar si un usuario ya guardó con anteriodidad una receta
+            </summary>
+            <param name="recipeID"></param>
+            <param name="userID"></param>
             <returns></returns>
         </member>
         <member name="M:HealthyCook_Backend.Controllers.RestaurantController.Post(HealthyCook_Backend.Domain.Models.Restaurant)">
