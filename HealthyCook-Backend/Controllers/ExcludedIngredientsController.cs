@@ -44,7 +44,7 @@ namespace HealthyCook_Backend.Controllers
         /// <param name="userID"></param>
         /// <returns></returns>
         [Route("GetListExcludedIngredientsByUser/{userID}")]
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> GetListExcludedIngredientsByUser(int userID)
         {
             try
@@ -58,12 +58,26 @@ namespace HealthyCook_Backend.Controllers
             }
         }
 
+        [Route("ola/{id}")]
+        [HttpGet]
+        public async Task<IActionResult> GetListExcludedIngredients(int id)
+        {
+            try
+            {
+                var excludedIngredientList = await _excludedIngredientsService.GetExcludedIngredient(id);
+                return Ok(excludedIngredientList);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         /// <summary>
         /// Remover un ingrediente excluido de la lista
         /// </summary>
         /// <param name="excludedIngredientID"></param>
         /// <returns></returns>
-        [HttpDelete("{excludedIngredientList}")]
+        [HttpDelete("{excludedIngredientID}")]
         public async Task<IActionResult> RemoveExcludedIngredient(int excludedIngredientID)
         {
             try
