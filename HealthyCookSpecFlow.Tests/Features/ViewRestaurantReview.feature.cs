@@ -112,19 +112,19 @@ this.ScenarioInitialize(scenarioInfo);
 #line 8
  testRunner.When("the restaurant owner presses the \"View reviews\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
                             "User",
                             "Commentary",
                             "Calification",
                             "Date"});
-                table18.AddRow(new string[] {
+                table17.AddRow(new string[] {
                             "Pedrito007",
                             "Estuvo todo muy rico, recomendado",
                             "4.5",
                             "30-04-2022"});
 #line 9
  testRunner.Then("will be redirected to the reviews section where the restaurant owner will be able" +
-                        " to see the reviews.", ((string)(null)), table18, "Then ");
+                        " to see the reviews.", ((string)(null)), table17, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -160,19 +160,19 @@ this.ScenarioInitialize(scenarioInfo);
 #line 14
  testRunner.Given("that the owner of the restaurant is in the reviews section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                             "Reviews"});
-                table19.AddRow(new string[] {
+                table18.AddRow(new string[] {
                             ""});
 #line 15
- testRunner.And("there are no reviews", ((string)(null)), table19, "And ");
+ testRunner.And("there are no reviews", ((string)(null)), table18, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
                             "Message"});
-                table20.AddRow(new string[] {
+                table19.AddRow(new string[] {
                             "Por el momento no hay ninguna reseña"});
 #line 18
- testRunner.Then("a message will  be displayed", ((string)(null)), table20, "Then ");
+ testRunner.Then("a message will  be displayed", ((string)(null)), table19, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

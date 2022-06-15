@@ -107,20 +107,17 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("a user is wants to add an ingredient to his list of excluded ingredients", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "IngredientName"});
+                            "IngredientName",
+                            "UserID"});
                 table1.AddRow(new string[] {
-                            "Zanahoria"});
+                            "Uva",
+                            "1"});
 #line 7
  testRunner.When("the user adds a new ingredient to the list", ((string)(null)), table1, "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Ingredientes Excluded"});
-                table2.AddRow(new string[] {
-                            "Zanahoria"});
-                table2.AddRow(new string[] {
-                            "Mani"});
 #line 10
- testRunner.Then("the ingredient will then be added to your list of excluded ingredients.", ((string)(null)), table2, "Then ");
+ testRunner.Then("the ingredient will then be added to your list of excluded ingredients with statu" +
+                        "s 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

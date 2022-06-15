@@ -106,16 +106,16 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
  testRunner.Given("a user wants to add a recipe", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Description",
                             "Preparation"});
-                table3.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "Arroz con leche",
                             "El arroz con leche es un postre típico de la gastronomía...",
                             "Pasos para preparar el arroz con leche"});
 #line 7
- testRunner.When("user add a new recipe", ((string)(null)), table3, "When ");
+ testRunner.When("user add a new recipe", ((string)(null)), table2, "When ");
 #line hidden
 #line 10
  testRunner.Then("the recipe will be published successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -154,23 +154,23 @@ this.ScenarioInitialize(scenarioInfo);
 #line 13
  testRunner.Given("a user wants to add a recipe", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Description",
                             "Preparation"});
-                table4.AddRow(new string[] {
+                table3.AddRow(new string[] {
                             "Arroz con leche",
                             "",
                             "Pasos para preparar el arroz con leche"});
 #line 14
- testRunner.And("does not complete the recipe description field", ((string)(null)), table4, "And ");
+ testRunner.And("does not complete the recipe description field", ((string)(null)), table3, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                             "Message Error"});
-                table5.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "Falta completar la descripción de la receta"});
 #line 17
- testRunner.Then("an error message will be displayed", ((string)(null)), table5, "Then ");
+ testRunner.Then("an error message will be displayed", ((string)(null)), table4, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

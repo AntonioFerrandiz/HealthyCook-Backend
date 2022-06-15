@@ -112,21 +112,21 @@ this.ScenarioInitialize(scenarioInfo);
 #line 8
  testRunner.When("he presses the button \"Search recipes\".", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                             "Recipe Name",
                             "Description"});
-                table11.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "Huevo frito",
                             "Aprende a preparar un huevo frito de la mejor manera"});
-                table11.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "Papa rebozada",
                             "No te quedes con hambre y sacale provecho a las papas que tienes"});
-                table11.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "Ensalada de papas",
                             "Prepara una rica ensalada de papas con huevo en menos de 10 minutos!"});
 #line 9
  testRunner.Then("will then be shown a list of recipes that he can cook with the selected ingredien" +
-                        "ts.", ((string)(null)), table11, "Then ");
+                        "ts.", ((string)(null)), table10, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -165,12 +165,12 @@ this.ScenarioInitialize(scenarioInfo);
 #line 17
  testRunner.When("he presses the button \"Search recipes\".", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                             "Message"});
-                table12.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "No se han encontrado recetas que contengan kiwi"});
 #line 18
- testRunner.Then("a message will be displayed", ((string)(null)), table12, "Then ");
+ testRunner.Then("a message will be displayed", ((string)(null)), table11, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -209,33 +209,33 @@ this.ScenarioInitialize(scenarioInfo);
 #line 23
  testRunner.When("recipes are obtained", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                             "Excluded Ingredients"});
-                table13.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "Mani"});
-                table13.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "Huevo"});
 #line 24
- testRunner.And("identify which of these contain an excluded ingredient.", ((string)(null)), table13, "And ");
+ testRunner.And("identify which of these contain an excluded ingredient.", ((string)(null)), table12, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                             "Recipe Name",
                             "Description"});
-                table14.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "Pollo verde",
                             "Pollo verde bien rico y facil de preparar"});
-                table14.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "Pollo frito",
                             "Pollito frito, cualquiera prepara esta delicia"});
 #line 28
- testRunner.Then("It will then show a list of recipes allowed for the user", ((string)(null)), table14, "Then ");
+ testRunner.Then("It will then show a list of recipes allowed for the user", ((string)(null)), table13, "Then ");
 #line hidden
-                TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                             "Excluded Recipes"});
-                table15.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "Pollo al mani"});
 #line 32
- testRunner.And("another list of recipes excluded by the user\'s preferences.", ((string)(null)), table15, "And ");
+ testRunner.And("another list of recipes excluded by the user\'s preferences.", ((string)(null)), table14, "And ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -268,19 +268,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                             "Ingredient"});
-                table16.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             ""});
 #line 36
- testRunner.Given("user searches for recipes without selecting ingredients", ((string)(null)), table16, "Given ");
+ testRunner.Given("user searches for recipes without selecting ingredients", ((string)(null)), table15, "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                             "Warning Message"});
-                table17.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "Debes seleccionar al menos un ingrediente"});
 #line 39
- testRunner.Then("a warning message will be displayed", ((string)(null)), table17, "Then ");
+ testRunner.Then("a warning message will be displayed", ((string)(null)), table16, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
