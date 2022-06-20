@@ -66,9 +66,9 @@ namespace HealthyCook_Backend.Services
             return await _recipeRepository.GetTodaysRecipes(date);
         }
 
-        public async Task<List<Recipe>> SearchRecipeByIngredient(string ingredient)
+        public async Task<List<Recipe>> SearchRecipeByIngredient(string ingredient, string excludedIngredient)
         {
-            return await _recipeRepository.SearchRecipeByIngredient(ingredient);
+            return await _recipeRepository.SearchRecipeByIngredient(ingredient, excludedIngredient);
         }
     }
 }

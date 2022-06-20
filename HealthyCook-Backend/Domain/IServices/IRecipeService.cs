@@ -18,6 +18,6 @@ namespace HealthyCook_Backend.Domain.IServices
         Task<List<Recipe>> GetListRecipes();
         Task<List<Recipe>> GetListRecipesPublishedByUser(int userID);
         Task<List<Recipe>> GetListRecipesNoPublishedByUser(int userID);
-        Task<List<Recipe>> SearchRecipeByIngredient(string ingredient);
+        Task<List<Recipe>> SearchRecipeByIngredient(string ingredient, string excludedIngredient);
     }
 }

@@ -72,6 +72,14 @@
             <param name="userId"></param>
             <returns></returns>
         </member>
+        <member name="M:HealthyCook_Backend.Controllers.RecipeController.SearchRecipeByIngredient(System.String,System.String)">
+            <summary>
+            Realizar uns busqueda de recetas a base de uno o más ingredientes ingresados, así mismo se tendrá en cuenta los ingredientes excluidos al momento de realizar la búsqueda
+            </summary>
+            <param name="ingredient"></param>
+            <param name="excludedIngredient"></param>
+            <returns></returns>
+        </member>
         <member name="M:HealthyCook_Backend.Controllers.RecipeController.ChangePublicationStatus(System.Int32)">
             <summary>
             Cambiar estado de publicación de la receta

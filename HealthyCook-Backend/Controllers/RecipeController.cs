@@ -183,13 +183,19 @@ namespace HealthyCook_Backend.Controllers
             }
         }
 
-        [Route("SearchRecipeByIngredient/{ingredient}")]
+        /// <summary>
+        /// Realizar uns busqueda de recetas a base de uno o más ingredientes ingresados, así mismo se tendrá en cuenta los ingredientes excluidos al momento de realizar la búsqueda
+        /// </summary>
+        /// <param name="ingredient"></param>
+        /// <param name="excludedIngredient"></param>
+        /// <returns></returns>
+        [Route("SearchRecipeByIngredient/{ingredient}/{excludedIngredient?}")]
         [HttpGet]
-        public async Task<IActionResult> SearchRecipeByIngredient(string ingredient)
+        public async Task<IActionResult> SearchRecipeByIngredient(string ingredient, string excludedIngredient)
         {
             try
             {
-                var recipeList = await _recipeService.SearchRecipeByIngredient(ingredient);
+                var recipeList = await _recipeService.SearchRecipeByIngredient(ingredient, excludedIngredient);
                 return Ok(recipeList);
             }
             catch (Exception ex)

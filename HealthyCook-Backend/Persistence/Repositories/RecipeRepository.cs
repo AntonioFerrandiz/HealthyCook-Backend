@@ -38,13 +38,21 @@ namespace HealthyCook_Backend.Persistence.Repositories
                 .ToListAsync();
             return recipesList;
         }
-        public async Task<List<Recipe>> SearchRecipeByIngredient(string ingredient)
+        public async Task<List<Recipe>> SearchRecipeByIngredient(string ingredient, string excludedIngredient)
         {
+            //var recipeList = await _context.Recipes
+            //    .FromSqlRaw("select r.ID, r.Name, r.Description, r.Preparation, r.Active, r.Published, r.UserID, r.DateCreated " +
+            //            $"from [dbo].[Ingredients] as i join [dbo].[IngredientTypes] as it on i.IngredientTypeID = it.ID join [dbo].[RecipeDetails] as rd on it.RecipeDetailsID = rd.ID join [dbo].[Recipes] as r on rd.RecipeID = r.ID where i.Name = '{ingredient}'")
+            //    .ToListAsync();
+            //return recipeList;
             var recipeList = await _context.Recipes
                 .FromSqlRaw("select r.ID, r.Name, r.Description, r.Preparation, r.Active, r.Published, r.UserID, r.DateCreated " +
-                        $"from [dbo].[Ingredients] as i join [dbo].[IngredientTypes] as it on i.IngredientTypeID = it.ID join [dbo].[RecipeDetails] as rd on it.RecipeDetailsID = rd.ID join [dbo].[Recipes] as r on rd.RecipeID = r.ID where i.Name = '{ingredient}'")
+                        $"from [dbo].[Ingredients] as i join [dbo].[IngredientTypes] as it on i.IngredientTypeID = it.ID join [dbo].[RecipeDetails] as rd on it.RecipeDetailsID = rd.ID join [dbo].[Recipes] as r on rd.RecipeID = r.ID where i.Name = '{ingredient}' " +
+                        "EXCEPT " +
+                        "select r.ID, r.Name, r.Description, r.Preparation, r.Active, r.Published, r.UserID, r.DateCreated " +
+                        $"from [dbo].[Ingredients] as i join [dbo].[IngredientTypes] as it on i.IngredientTypeID = it.ID join [dbo].[RecipeDetails] as rd on it.RecipeDetailsID = rd.ID join [dbo].[Recipes] as r on rd.RecipeID = r.ID where i.Name = '{excludedIngredient}' ")
                 .ToListAsync();
-             return recipeList;
+            return recipeList;
         }
         public async Task<List<Recipe>> GetListRecipes()
         {
