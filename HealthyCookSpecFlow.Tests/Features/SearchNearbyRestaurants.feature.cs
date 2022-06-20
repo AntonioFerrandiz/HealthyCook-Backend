@@ -108,17 +108,17 @@ this.ScenarioInitialize(scenarioInfo);
 #line 7
  testRunner.When("the user goes to the search bar for restaurants", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                             "Restaurant Name",
                             "Ubication"});
-                table8.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "Polleria Pollito",
                             "a 1km"});
-                table8.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "Menú Lola",
                             "a 500m"});
 #line 8
- testRunner.Then("will then be presented with restaurants near your current location", ((string)(null)), table8, "Then ");
+ testRunner.Then("will then be presented with restaurants near your current location", ((string)(null)), table10, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -160,12 +160,12 @@ this.ScenarioInitialize(scenarioInfo);
 #line 15
  testRunner.And("there is no restaurant near your location", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                             "Message"});
-                table9.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "No hay ningún restaurante cerca a tu ubicación actual"});
 #line 16
- testRunner.Then("the user will then be notified that there is no restaurant available nearby.", ((string)(null)), table9, "Then ");
+ testRunner.Then("the user will then be notified that there is no restaurant available nearby.", ((string)(null)), table11, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

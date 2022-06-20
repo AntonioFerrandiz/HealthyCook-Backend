@@ -35,8 +35,8 @@ namespace HealthyCookSpecFlow.Tests.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "AddExcludedIngredients", "\tAs a user I want to add ingredients to my list of excluded ingredients in order " +
-                    "to prevent recipes containing these ingredients from appearing.", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "AddExcludedIngredients", "\tAs a user \r\n\tI want to add ingredients to my list of excluded ingredients in ord" +
+                    "er \r\n\tto prevent recipes containing these ingredients from appearing.", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,6 +74,15 @@ namespace HealthyCookSpecFlow.Tests.Features
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 6
+ #line hidden
+#line 7
+  testRunner.Given("the Endpoint http://localhost:50947/api/ExcludedIngredients is available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+        }
+        
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("User add new ingredient to its list of excluded ingredients")]
         [NUnit.Framework.CategoryAttribute("addExcludedIngredients")]
@@ -83,7 +92,7 @@ namespace HealthyCookSpecFlow.Tests.Features
                     "addExcludedIngredients"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User add new ingredient to its list of excluded ingredients", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 5
+#line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -104,7 +113,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 6
- testRunner.Given("a user is wants to add an ingredient to his list of excluded ingredients", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ this.FeatureBackground();
 #line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                             "IngredientName",
@@ -112,12 +121,66 @@ this.ScenarioInitialize(scenarioInfo);
                 table1.AddRow(new string[] {
                             "Uva",
                             "1"});
-#line 7
- testRunner.When("the user adds a new ingredient to the list", ((string)(null)), table1, "When ");
+#line 11
+ testRunner.When("A user add new ingredient to his list", ((string)(null)), table1, "When ");
 #line hidden
-#line 10
- testRunner.Then("the ingredient will then be added to your list of excluded ingredients with statu" +
-                        "s 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 14
+ testRunner.Then("A Response with status 200 is received", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "IngredientName",
+                            "UserID"});
+                table2.AddRow(new string[] {
+                            "Uva",
+                            "1"});
+#line 15
+ testRunner.And("A Excluded Ingredient Resource is included in Response Body", ((string)(null)), table2, "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add new excluded ingredient with null ingredient name")]
+        public virtual void AddNewExcludedIngredientWithNullIngredientName()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add new excluded ingredient with null ingredient name", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 19
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 6
+ this.FeatureBackground();
+#line hidden
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "IngredientName",
+                            "UserID"});
+                table3.AddRow(new string[] {
+                            "",
+                            "1"});
+#line 20
+ testRunner.When("A Post Request is sent with IngredientName null", ((string)(null)), table3, "When ");
+#line hidden
+#line 23
+ testRunner.Then("A Response with status 400 is received", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

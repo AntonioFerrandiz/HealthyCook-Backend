@@ -1,8 +1,8 @@
-﻿
-using System;
+﻿using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mime;
 using System.Runtime.CompilerServices;
 using System.Text;
 using HealthyCook_Backend;
@@ -22,46 +22,56 @@ namespace HealthyCookSpecFlow.Tests.Steps
         private readonly WebApplicationFactory<Startup> _factory;
         private HttpClient _client;
         private Uri _baseUri;
-        private ConfiguredTaskAwaitable<HttpResponseMessage> Response
-        {
-            get;
-            set;
-        }
+        private ConfiguredTaskAwaitable<HttpResponseMessage> Response { get; set; }
+        
         public AddExcludedIngredientsSteps(WebApplicationFactory<Startup> factory)
         {
             _factory = factory;
         }
-        [Given(@"a user is wants to add an ingredient to his list of excluded ingredients")]
-        public void GivenAUserIsWantsToAddAnIngredientToHisListOfExcludedIngredients()
+
+        [Given(@"the Endpoint http://localhost:(.*)/api/ExcludedIngredients is available")]
+        public void GivenTheEndpointHttpLocalhostApiExcludedIngredientsIsAvailable(int port)
         {
-            _baseUri = new Uri($"http://localhost:50947/api/ExcludedIngredients");
+            _baseUri = new Uri($"http://localhost:{port}/api/ExcludedIngredients");
             _client = _factory.CreateClient(new WebApplicationFactoryClientOptions { BaseAddress = _baseUri });
-
         }
-        
-        [When(@"the user adds a new ingredient to the list")]
-        public void WhenTheUserAddsANewIngredientToTheList(Table table)
+
+        [When(@"A user add new ingredient to his list")]
+        public void WhenAUserAddNewIngredientToHistList(Table savedExcludedIngredientResource)
         {
-         
-            ExcludedIngredients excludedIngredients = table.CreateSet<ExcludedIngredients>().Single();
-            var content = new StringContent(excludedIngredients.ToJson(), Encoding.UTF8, "application/json");
-            Response = _client.PostAsync(_baseUri, content).ConfigureAwait(true);
+            var resource = savedExcludedIngredientResource.CreateSet<ExcludedIngredients>().First();
+            var content = new StringContent(resource.ToJson(), Encoding.UTF8, MediaTypeNames.Application.Json);
+            Response = _client.PostAsync(_baseUri, content).ConfigureAwait(false);
         }
 
-        [Then(@"the ingredient will then be added to your list of excluded ingredients with status (.*)")]
-        public void ThenTheIngredientWillThenBeAddedToYourListOfExcludedIngredientsWithStatus(int p0)
+        [Then(@"A Response with status (.*) is received")]
+        public void ThenAResponseWithStatusIsReceived(int expectedStatus)
         {
-            HttpStatusCode statusCode = (HttpStatusCode)p0;
-            Console.WriteLine(statusCode);
-            Assert.AreEqual(statusCode.ToString(), Response.GetAwaiter().GetResult().StatusCode.ToString());
+            var expectedStatusCode = ((HttpStatusCode)expectedStatus).ToString();
+            var actualStatusCode = Response.GetAwaiter().GetResult().StatusCode.ToString();
+            Assert.AreEqual(expectedStatusCode, actualStatusCode);
         }
 
-        [Then(@"no ingredient will be added and there will be an error with status (.*)")]
-        public void ThenThenNoIngredientWillBeAddedAndThereWillBeAnErrorWithStatus(int p0)
+        [Then(@"A Excluded Ingredient Resource is included in Response Body")]
+        public async void ThenAExcludedIngredientResourceIsIncludedInResponseBody(Table expectedExcludedIngredientResource)
         {
-            HttpStatusCode statusCode = (HttpStatusCode)p0;
-            Assert.AreEqual(statusCode.ToString(), Response.GetAwaiter().GetResult().StatusCode.ToString());
+            var expectedResource = expectedExcludedIngredientResource.CreateSet<ExcludedIngredients>().First();
+            var responseData = await Response.GetAwaiter().GetResult().Content.ReadAsStringAsync();
+            var resource = JsonConvert.DeserializeObject<ExcludedIngredients>(responseData);
+            expectedResource.ID= resource.ID;
+            var jsonExpectedResource = expectedResource.ToJson();
+            var jsonActualResource = resource.ToJson();
+            Assert.AreEqual(jsonExpectedResource, jsonActualResource);
         }
 
+        // Scenario 2
+
+        [When(@"A Post Request is sent with IngredientName null")]
+        public void WhenAPostRequestIsSentWithIngredientNameNull(Table savedExcludedIngredientResource)
+        {
+            var resource = savedExcludedIngredientResource.CreateSet<ExcludedIngredients>().First();
+            var content = new StringContent(resource.ToJson(), Encoding.UTF8, MediaTypeNames.Application.Json);
+            Response = _client.PostAsync(_baseUri, content).ConfigureAwait(false);
+        }
     }
 }
