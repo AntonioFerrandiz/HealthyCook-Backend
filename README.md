@@ -7,8 +7,6 @@ Pasos para compilar el backend
 - Borrar el texto que contiene
 - En el explorador de soluciones buscar el archivo _HealthyCook-Backend.xml_, clic derecho -> Copiar ruta de acceso completo
 - Copiar el texto entre las etiquetas <_DocumentationFile_>
+- Abrir la consola de administrador de paquetes
+- Escribir el comando _Update-Database_ y presionar Enter 
 - Compilar la solución
-
-Para acceder a la documentación de la API http://localhost:xxxxx/swagger
-<div>xxxxx representa el puerto </div>
-  
