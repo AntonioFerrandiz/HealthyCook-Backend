@@ -29,8 +29,14 @@ namespace HealthyCook_Backend.Controllers
             try
             {
                 excludedIngredients.UserID = 1;
-                await _excludedIngredientsService.AddExcludedIngredient(excludedIngredients);
-                return Ok();
+                var verify = await _excludedIngredientsService.VerifyExcludedIngredientSaved(excludedIngredients.IngredientName, 1);
+                if (!verify)
+                {
+                    await _excludedIngredientsService.AddExcludedIngredient(excludedIngredients);
+                    return Ok();
+                }
+                return BadRequest("Ya agregaste este ingrediente a tu lista");
+                
             }
             catch (Exception ex)
             {
@@ -58,7 +64,7 @@ namespace HealthyCook_Backend.Controllers
             }
         }
 
-        [Route("ola/{id}")]
+        [Route("SearchExcludedIngredient/{id}")]
         [HttpGet]
         public async Task<IActionResult> GetListExcludedIngredients(int id)
         {

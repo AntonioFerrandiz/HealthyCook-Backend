@@ -11,6 +11,7 @@ namespace HealthyCook_Backend.Domain.IRepositories
         Task AddExcludedIngredient(ExcludedIngredients excludedIngredients);
         Task RemoveExcludedIngredient(ExcludedIngredients excludedIngredients);
         Task<ExcludedIngredients> GetExcludedIngredient(int excludedIngredientID);
+        Task<bool> VerifyExcludedIngredientSaved(string excludedIngredientName, int userID);
         Task<List<ExcludedIngredients>> GetExcludedIngredients(int userID);
 
     }

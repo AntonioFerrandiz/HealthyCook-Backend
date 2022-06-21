@@ -35,5 +35,10 @@ namespace HealthyCook_Backend.Services
         {
             await _excludedIngredientsRepository.RemoveExcludedIngredient(excludedIngredients);
         }
+
+        public async Task<bool> VerifyExcludedIngredientSaved(string excludedIngredientName, int userID)
+        {
+            return await _excludedIngredientsRepository.VerifyExcludedIngredientSaved(excludedIngredientName, userID);
+        }
     }
 }

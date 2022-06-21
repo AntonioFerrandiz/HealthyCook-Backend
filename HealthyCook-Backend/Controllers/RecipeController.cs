@@ -192,7 +192,12 @@ namespace HealthyCook_Backend.Controllers
         [Route("SearchRecipeByIngredient/{ingredient}/{excludedIngredient?}")]
         [HttpGet]
         public async Task<IActionResult> SearchRecipeByIngredient(string ingredient, string excludedIngredient)
+
         {
+            if (ingredient == excludedIngredient)
+            {
+                return BadRequest("No puedes buscar una receta con un ingrediente que has agregado a la lista de ingredientes excluidos");
+            }
             try
             {
                 var recipeList = await _recipeService.SearchRecipeByIngredient(ingredient, excludedIngredient);

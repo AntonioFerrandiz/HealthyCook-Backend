@@ -44,5 +44,12 @@ namespace HealthyCook_Backend.Persistence.Repositories
             _context.Entry(excludedIngredients).State = EntityState.Deleted;
             await _context.SaveChangesAsync ();
         }
+
+        public async Task<bool> VerifyExcludedIngredientSaved(string excludedIngredientName, int userID)
+        {
+            var verifiy = await _context.ExcludedIngredients
+                .AnyAsync(x => x.UserID == userID && x.IngredientName == excludedIngredientName);
+            return verifiy;
+        }
     }
 }
