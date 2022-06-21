@@ -109,20 +109,20 @@ this.ScenarioInitialize(scenarioInfo);
 #line 7
  testRunner.And("goes to the account registration window", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                             "Username",
                             "Firstname",
                             "Lastname",
                             "Email",
                             "Password"});
-                table7.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "Pedrito007",
                             "Pedro",
                             "Humal",
                             "pedrito01@gmail.com",
                             "pedritolomax01!"});
 #line 8
- testRunner.When("the user fills in the form with the requested information", ((string)(null)), table7, "When ");
+ testRunner.When("the user fills in the form with the requested information", ((string)(null)), table10, "When ");
 #line hidden
 #line 11
  testRunner.Then("the user will be successfully registered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -164,12 +164,12 @@ this.ScenarioInitialize(scenarioInfo);
 #line 15
  testRunner.When("the user does not successfully confirm his password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                             "Warning Message"});
-                table8.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "Las contraseñas no coinciden"});
 #line 16
- testRunner.Then("a warning message will be displayed on the password input", ((string)(null)), table8, "Then ");
+ testRunner.Then("a warning message will be displayed on the password input", ((string)(null)), table11, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -208,12 +208,12 @@ this.ScenarioInitialize(scenarioInfo);
 #line 22
  testRunner.And("it is already in use by another user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                             "Message"});
-                table9.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "El email ingresado ya se encuentra en uso"});
 #line 23
- testRunner.Then("you will not be able to register and a message will be displayed", ((string)(null)), table9, "Then ");
+ testRunner.Then("you will not be able to register and a message will be displayed", ((string)(null)), table12, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

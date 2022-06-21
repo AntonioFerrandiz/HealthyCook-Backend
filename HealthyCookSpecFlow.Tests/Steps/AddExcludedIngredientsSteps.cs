@@ -52,18 +52,6 @@ namespace HealthyCookSpecFlow.Tests.Steps
             Assert.AreEqual(expectedStatusCode, actualStatusCode);
         }
 
-        [Then(@"A Excluded Ingredient Resource is included in Response Body")]
-        public async void ThenAExcludedIngredientResourceIsIncludedInResponseBody(Table expectedExcludedIngredientResource)
-        {
-            var expectedResource = expectedExcludedIngredientResource.CreateSet<ExcludedIngredients>().First();
-            var responseData = await Response.GetAwaiter().GetResult().Content.ReadAsStringAsync();
-            var resource = JsonConvert.DeserializeObject<ExcludedIngredients>(responseData);
-            expectedResource.ID= resource.ID;
-            var jsonExpectedResource = expectedResource.ToJson();
-            var jsonActualResource = resource.ToJson();
-            Assert.AreEqual(jsonExpectedResource, jsonActualResource);
-        }
-
         // Scenario 2
 
         [When(@"A Post Request is sent with IngredientName null")]
@@ -71,7 +59,53 @@ namespace HealthyCookSpecFlow.Tests.Steps
         {
             var resource = savedExcludedIngredientResource.CreateSet<ExcludedIngredients>().First();
             var content = new StringContent(resource.ToJson(), Encoding.UTF8, MediaTypeNames.Application.Json);
+            
             Response = _client.PostAsync(_baseUri, content).ConfigureAwait(false);
         }
+
+        // Scenario 3
+        [When(@"A Post request is sent with IngredientName that was already in the list")]
+        public void WhenAPostRequestIsSentWithIngredientNameThatWasAlreadyInTheList(Table savedExcludedIngredientResource)
+        {
+            var resource = savedExcludedIngredientResource.CreateSet<ExcludedIngredients>().First();
+            var content = new StringContent(resource.ToJson(), Encoding.UTF8, MediaTypeNames.Application.Json);
+            Response = _client.PostAsync(_baseUri, content).ConfigureAwait(false);
+        }
+
+        [Then(@"A Message of ""(.*)"" is include in response body")]
+        public async void ThenAMessageOfIsIncludeInResponseBody(string expectedMessage)
+        {
+            var actualMessage = await Response.GetAwaiter().GetResult().Content.ReadAsStringAsync();
+            var stringExpectedMessage = expectedMessage.ToString();
+            Assert.AreEqual(stringExpectedMessage, actualMessage);
+        }
+        // Scenario 4
+        [When(@"a user search recipe using an ingredient")]
+        public void WhenRecipeSearchUsingAnIngredient(Table ingredients)
+        {
+            var baseUriForSearch = $"http://localhost:50947/api/Recipe/SearchRecipeByIngredient/{ingredients.Rows[0][0]}/{ingredients.Rows[0][1]}";
+            Response = _client.GetAsync(baseUriForSearch).ConfigureAwait(false);
+
+        }
+
+        [Then(@"A RecipeFound Resource is included in Response Body")]
+        public async void ThenARecipeFoundResourceIsIncludedInResponseBody(Table expectedRecipeResource)
+        {
+            var expectedResource = expectedRecipeResource.CreateSet<Recipe>().First();
+            var responseData = await Response.GetAwaiter().GetResult().Content.ReadAsStringAsync();
+            var resource = JsonConvert.DeserializeObject<Recipe>(responseData);
+            var jsonExpectedResource = expectedResource.ToJson();
+            var jsonActualResources = resource.ToJson();
+            Assert.AreEqual(jsonExpectedResource, jsonActualResources);
+        }
+
+        // Scenario 5
+        [When(@"a user searches for a recipe with an ingredient that is on your list of excluded ingredients")]
+        public void WhenAUserSearchesForARecipeWithAnIngredientThatIsOnYourListOfExcludedIngredients(Table ingredients)
+        {
+            var baseUriForSearch = $"http://localhost:50947/api/Recipe/SearchRecipeByIngredient/{ingredients.Rows[0][0]}/{ingredients.Rows[0][1]}";
+            Response = _client.GetAsync(baseUriForSearch).ConfigureAwait(false);
+        }
+
     }
 }
