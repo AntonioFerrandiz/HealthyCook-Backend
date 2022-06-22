@@ -20,6 +20,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore HealthyCook-Backend/HealthyCook-Backend.csproj
     - name: Build
-      run: dotnet build HealthyCook-Backend\HealthyCook-Backend.csproj --no-restore
+      run: dotnet build HealthyCook-Backend/HealthyCook-Backend.csproj --no-restore
     - name: Test
-      run: dotnet test HealthyCookSpecFlow.Tests\HealthyCookSpecFlow.Tests.csproj --no-build --verbosity normal
+      run: dotnet test HealthyCookSpecFlow.Tests/HealthyCookSpecFlow.Tests.csproj --no-build --verbosity normal
