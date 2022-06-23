@@ -54,7 +54,8 @@ jobs:
             ${{ runner.os }}-nuget-
       - name: Build with dotnet
         run: dotnet build HealthyCook-Backend/HealthyCook-Backend.csproj --configuration Release
-
+      - name: Test with dotnet
+        run: dotnet test HealthyCookSpecFlow.Tests/HealthyCookSpecFlow.Tests.csproj --no-build --verbosity normal
       - name: dotnet publish
         run: dotnet publish HealthyCook-Backend/HealthyCook-Backend.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
