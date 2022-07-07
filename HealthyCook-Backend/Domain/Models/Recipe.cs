@@ -28,7 +28,7 @@ namespace HealthyCook_Backend.Domain.Models
         public int UserID { get; set; }
         public User User { get; set; }
 
-
+        //public List<Restaurant> restaurantList { get; set; }
         //public int RecipeDetailsID { get; set; }
         //public RecipeDetails RecipeDetails{ get; set; }
 

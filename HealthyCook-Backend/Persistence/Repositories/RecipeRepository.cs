@@ -33,7 +33,7 @@ namespace HealthyCook_Backend.Persistence.Repositories
         public async Task<List<Recipe>> GetLastFiveRecipes()
         {
             var recipesList = await _context.Recipes
-                .FromSqlRaw("select top 5  r.ID, r.Name, r.Description, r.Preparation, r.Active, r.Published, r.UserID, rd.DateCreated, rd.PreparationTime, rd.TimePeriod, rd.Servings, rd.Difficulty, rd.Calories " +
+                .FromSqlRaw("select top 5  r.ID, r.Name, r.Description, r.Preparation, r.Active, r.Published, r.UserID, r.DateCreated, rd.PreparationTime, rd.TimePeriod, rd.Servings, rd.Difficulty, rd.Calories " +
                 "from [dbo].[RecipeDetails] as rd left outer join [dbo].[Recipes] as r on rd.RecipeID = r.ID where r.Published = 1 and r.Active = 1 order by r.ID desc")
                 .ToListAsync();
             return recipesList;

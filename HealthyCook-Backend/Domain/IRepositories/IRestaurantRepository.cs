@@ -14,6 +14,5 @@ namespace HealthyCook_Backend.Domain.IRepositories
         Task<Restaurant> SearchRestaurant(int restaurantID);
         Task<List<Restaurant>> GetListRestaurants();
 
-
     }
 }

@@ -31,5 +31,7 @@ namespace HealthyCook_Backend.Domain.Models
 
         public int RestaurantOwnerID { get; set; }
         public RestaurantOwner RestaurantOwner { get; set; }
+
+        
     }
 }

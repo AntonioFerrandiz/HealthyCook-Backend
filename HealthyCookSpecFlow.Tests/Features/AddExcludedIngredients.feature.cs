@@ -138,7 +138,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("S002 Add new excluded ingredient with null ingredient name", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 19
+#line 16
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -167,10 +167,10 @@ this.ScenarioInitialize(scenarioInfo);
                 table2.AddRow(new string[] {
                             "",
                             "1"});
-#line 20
+#line 17
  testRunner.When("A Post Request is sent with IngredientName null", ((string)(null)), table2, "When ");
 #line hidden
-#line 23
+#line 20
  testRunner.Then("A Response with status 400 is received", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -184,7 +184,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("S003 Add excluded ingredient that was already on the list", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 24
+#line 21
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -213,13 +213,13 @@ this.ScenarioInitialize(scenarioInfo);
                 table3.AddRow(new string[] {
                             "Uva",
                             "1"});
-#line 25
+#line 22
  testRunner.When("A Post request is sent with IngredientName that was already in the list", ((string)(null)), table3, "When ");
 #line hidden
-#line 28
+#line 25
  testRunner.Then("A Response with status 400 is received", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 29
+#line 26
  testRunner.And("A Message of \"Ya agregaste este ingrediente a tu lista\" is include in response bo" +
                         "dy", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
@@ -234,7 +234,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("S004 A user searches for a recipe based on an ingredient", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 30
+#line 27
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -263,10 +263,10 @@ this.ScenarioInitialize(scenarioInfo);
                 table4.AddRow(new string[] {
                             "Tomate",
                             "Pollo"});
-#line 31
+#line 28
  testRunner.When("a user search recipe using an ingredient", ((string)(null)), table4, "When ");
 #line hidden
-#line 34
+#line 31
  testRunner.Then("A Response with status 200 is received", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
                 TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -293,7 +293,7 @@ this.ScenarioInitialize(scenarioInfo);
                                 "sim.",
                             "1",
                             "null"});
-#line 35
+#line 32
  testRunner.And("A RecipeFound Resource is included in Response Body", ((string)(null)), table5, "And ");
 #line hidden
             }
@@ -309,7 +309,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("S005 A user searches for a recipe based on an ingredient but that ingredient is e" +
                     "xcluded from the list of ingredients", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 39
+#line 36
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -338,14 +338,14 @@ this.ScenarioInitialize(scenarioInfo);
                 table6.AddRow(new string[] {
                             "Pollo",
                             "Pollo"});
-#line 40
+#line 37
  testRunner.When("a user searches for a recipe with an ingredient that is on your list of excluded " +
                         "ingredients", ((string)(null)), table6, "When ");
 #line hidden
-#line 43
+#line 40
  testRunner.Then("A Response with status 400 is received", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 44
+#line 41
  testRunner.And("A Message of \"No puedes buscar una receta con un ingrediente que has agregado a l" +
                         "a lista de ingredientes excluidos\" is include in response body", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
